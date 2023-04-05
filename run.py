@@ -29,8 +29,16 @@ def target_score():
     """
     Get user's target score out of 10
     """
-    print("The quiz contains 10 questions. What is your target score out of 10?")
+    print("The quiz contains 10 questions.\nWhat is your target score out of 10?")
     target_score = input("My goal is: ")
+    target = range(1,10)
+    try:
+        if target_score is not target:
+            raise ValueError(
+                f"Your target must be between 1 and 10, you provided {target_score}"
+            )
+    except ValueError as error:
+        print(f"Invalid data: {error}, please try again.\n")
 
 target_score()
 
