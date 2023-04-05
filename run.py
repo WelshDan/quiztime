@@ -14,6 +14,26 @@ SHEET = GSPREAD_CLIENT.open('quiztime')
 
 questions = SHEET.worksheet('questions')
 
-data = questions.get_all_values()
+def new_player():
+    """
+    Get username from the user
+    """
+    print("Please enter your name")
 
-print(data)
+    username = input("Username: ")
+    print(f"Welcome {username}!")
+
+new_player()
+
+def target_score():
+    """
+    Get user's target score out of 10
+    """
+    print("The quiz contains 10 questions. What is your target score out of 10?")
+    target_score = input("My goal is: ")
+
+target_score()
+
+#data = questions.get_all_values()
+
+#print(data)
