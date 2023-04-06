@@ -35,10 +35,10 @@ def target_score():
     \n repeat until a figure between 1 and 10 is entered.
     """
     while True:
-        print("The quiz contains 10 questions.\n What is your target score out of 10?")
+        print("The quiz contains 10 questions.\nWhat is your target score out of 10?")
         target_score = input("My goal is: ")
-        target = range(1,10)
-        print(target_score)
+        target = range(1, 10)
+        print(f"OK, good luck trying to get more than {target_score}!")
         try:
             if target_score is target:
                 raise ValueError(
@@ -49,25 +49,45 @@ def target_score():
             return False
         else:
             print("Can you beat that target? Good luck with the quiz.")
-            print("Here comes your first question...")
             return True
 
 target_score()
 
-def start_quiz():
+def ask_question():
     """
     Locate the first question in the list
     """
     question_number = questions.acell("A2").value
-    print(f" Here is question {question_number}...\n")
+    print(f" Here is question {question_number}...")
     question = questions.acell("B2").value
     print(question)
 
-start_quiz()
+ask_question()
 
-#ask_question()
+def save_answer():
+    """
+    User enters answer with a letter between A and D.
+    Answer is logged for later results.
+    """
+    while True:
+        print("What is your answer? A,B,C or D")
+        answer = input("My answer is ")
+        print(f"You've guessed answer {answer}")
+        possible_answers = ("a", "A", "B", "b", "C", "c", "D", "d")
+        try:
+            answer == possible_answers
+                if answer != possible_answers
+                    raise KeyError(
+                    f"You can only answer with A, B, C or D"
+                    )
+        except ValueError as error:
+                print(f"Invalid data: {error}, please try again.\n")
+        return False
+        else:
+            print("Thank you for your answer.")
+            return True
 
-#save_answer()
+save_answer()
 
 #ask_next_question()
 
