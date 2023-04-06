@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -12,7 +13,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('quiztime')
 
-questions = SHEET.worksheet('questions')
+questions = SHEET.worksheet('Alist')
+
 
 def player_name():
     """
@@ -27,10 +29,13 @@ player_name()
 
 def target_score():
     """
-    Get user's target score out of 10
+    Get user's target score out of 10. Run a while loop to collect the
+    players guess of their correct answer \n target, via
+    the terminal which has to be a number between 1 and 10. The loop will
+    \n repeat until a figure between 1 and 10 is entered.
     """
     while True:
-        print("The quiz contains 10 questions.\nWhat is your target score out of 10?")
+        print("The quiz contains 10 questions.\n What is your target score out of 10?")
         target_score = input("My goal is: ")
         target = range(1,10)
         print(target_score)
@@ -44,14 +49,32 @@ def target_score():
             return False
         else:
             print("Can you beat that target? Good luck with the quiz.")
+            print("Here comes your first question...")
             return True
 
 target_score()
 
-#def question_test()
+def start_quiz():
+    """
+    Locate the first question in the list
+    """
+    question_number = questions.acell("A2").value
+    print(f" Here is question {question_number}...\n")
+    question = questions.acell("B2").value
+    print(question)
 
+start_quiz()
 
+#ask_question()
 
-#data = questions.get_all_values()
+#save_answer()
+
+#ask_next_question()
+
+#check_quiz_complete()
+
+#display_results
+
+#close_quiz
 
 #print(data)
