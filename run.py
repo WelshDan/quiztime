@@ -15,10 +15,10 @@ SHEET = GSPREAD_CLIENT.open('quiztime')
 
 questions = SHEET.worksheet('Alist')
 
-TOTAL_QUESTIONS = 10
-SCORE = 0
-QUESTIONS_LIST = []
-QUESTION_INDEX = 0
+total_questions = 10
+score = 0
+questions_list = []
+question_index = 0
 
 
 def welcome_screen():
@@ -26,11 +26,11 @@ def welcome_screen():
     Start screen that welcomes the user
     """
     print("Hello")
-    time.sleep(3)
+    time.sleep(2)
     print("Welcome to...")
-    time.sleep(3)
+    time.sleep(2)
     print("QUIZTIME")
-    time.sleep(3)
+    time.sleep(2)
 
 
 def player_name():
@@ -40,9 +40,9 @@ def player_name():
     print("Please enter your name")
 
     username = input("My name is ")
-    time.sleep(3)
+    time.sleep(2)
     print(f"Welcome {username}!")
-    time.sleep(3)
+    time.sleep(2)
 
 
 def target_score():
@@ -53,9 +53,11 @@ def target_score():
     \n repeat until a figure between 1 and 10 is entered.
     """
     while True:
-        print("The quiz contains " + str(TOTAL_QUESTIONS) + " questions.\
+        print("The quiz contains " + str(total_questions) + " questions.\
             What is your target score?\n")
-        target_score = input("My goal is: ")
+        time.sleep(2)
+        target_score = int(input("My goal is: "))
+        time.sleep(2)
         target = range(1, 10)
         print(f"OK, good luck trying to get more than {target_score}!")
         try:
@@ -68,8 +70,8 @@ def target_score():
             print(f"Invalid data: {error}, please try again.\n")
             return False
         else:
-            time.sleep(3)
             print("Can you beat that target?")
+            time.sleep(2)
             return True
 
 
@@ -80,6 +82,7 @@ def ask_question():
     """
     question = questions_list[question_index + 1]
     print(f" Here is question {question[0]}...\n")
+    time.sleep(2)
     print(question[1])
 
 
@@ -91,7 +94,9 @@ def save_answer():
     global score
     while True:
         print("What is your answer? A,B,C or D\n")
+        time.sleep(2)
         answer = input("My answer is ").lower()
+        time.sleep(2)
         print(f"You've guessed answer {answer}")
         possible_answers = ["a", "b", "c", "d"]
         try:
@@ -107,12 +112,32 @@ def save_answer():
             print(f"Invalid data: {error}, please try again.\n")
 
 
+def display_results():
+    """
+    Target score and actual score are compared and the results are returned.
+    """
+    if total_questions == 10:
+        print(f"Your final score is {score}")
+        return target_score
+        time.sleep(2)
+    if score > target_score:
+        print(f"Sadly, your target score was {target_score}\
+            but you only got {score}.")
+        print("You are not as clever as you think")
+    if score == target_score:
+        print(f"Well done! Your target score was {target_score} \
+            and you matched that it!")
+        print(f"You scored {score}. You know exactly how clever you are!")
+    if score < target_score:
+        print(f"Congratulations! Your target was {target_score}\
+            but you scored {score}")
+        print("You are much smarter than you think you are!")
+
+
 def initialise_questions():
     global questions_list
     questions_list = questions.get_values()
 
-
-question_index = question_index + 1
 
 def main():
     global question_index
@@ -120,10 +145,13 @@ def main():
     welcome_screen()
     player_name()
     target_score()
-    while question_index < TOTAL_QUESTIONS:
+    while question_index < total_questions:
         ask_question()
         save_answer()
+        question_index = question_index + 1
+        display_results()
     print("Thank you for taking part in the quiz")
+    print("(Dan Roberts 2023)")
 
 
 main()
