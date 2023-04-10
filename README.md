@@ -1,22 +1,31 @@
 #QUIZTIME
 
-Quiztime is a Python terminal game, which uses the mock terminal by Code Institute on Heroku.
+Quiztime is a Python terminal game that uses the mock terminal by Code Institute on Heroku.
 
-The quiz is played by one player, who answers 10 questions to see how many they can answer.
+This general knowledge quiz is played by one player. Can they beat their own target?
 
 ## HOW TO PLAY
 
-## FEATURES
+Quiztime is a general knowledge game where a player answers questions, having 4 alternatives to choose from. The questions are taken from a range of subjects. The game continues until all 10 questions are answered.
 
-Players set a goal before playing to see if they can beat their target score.
-Players answer a set of 10 general knowledge questions by pressing the A, B, C or D keys on hthe keyboard and pressing enter. Their scores are logged and at the end of the quiz they will find out their final score to see if they have beaten their target.
+### Features
+
+The player first enters their name and then a target score for them to try and beat. This score is out of 10.
+The player will then be shown 10 questions and the 4 alternative answers. The players enter their answers by pressing the A, B, C or D keys on the keyboard and pressing enter. Their score is checked and then the correct answer is shown. Their running score is logged. Once the 10th question is answered and that score checked then the final score is revealed.
 
 ### Existing features
 
+One player game
+Player plans to beat their projected final score
+Questions appear one at a time
+Input validation and error checking
+All four possible answer alternatives are used during the quiz
 
 ### Future features
 
-There are two other sets of 10 questions waiting to be uploaded so there are more questions that could be added onto the game.
+New questions to be added
+Players could type in their answer
+Colours could be added to make the game more dynamic
 
 ## TESTING
 
@@ -26,9 +35,13 @@ There are two other sets of 10 questions waiting to be uploaded so there are mor
 
 #### Remaining Bugs
 
+
+
 #### Validator testing
 
 PEP8 - online test
+
+![Screenshot](assets/images/PEP8%20check.jpg)
 
 ## DEPLOYMENT
 
@@ -36,6 +49,15 @@ The project was deployed using the mock terminal made by Code Institute on Herok
 
 ## CREDITS
 
+### Deployment
+
+Code Institute for deployment terminal
+Quiztime deployed via Heroku
+Quiztime is an idea created and deployed by Dan Roberts 2023
+
+### Help and guidance
+
 GURU99.com - time delay function
-https://www.guru99.com/python-time-sleep-delay.html#:~:text=Python%20sleep()%20is%20a,the%20execution%20of%20your%20code.
-Akhsat Garg - my mentor
+(https://www.guru99.com/python-time-sleep-delay.html#:~:text=Python%20sleep()%20is%20a,the%20execution%20of%20your%20code)
+
+Akhsat Garg - mentor at Code Institute

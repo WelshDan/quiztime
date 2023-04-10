@@ -25,9 +25,9 @@ def welcome_screen():
     """
     Start screen that welcomes the user
     """
-    print("Hello")
+    print("Hello!")
     time.sleep(2)
-    print("Welcome to...")
+    print("and welcome to...")
     time.sleep(2)
     print("QUIZTIME")
     time.sleep(2)
@@ -94,7 +94,7 @@ def save_answer():
     while True:
         print("What is your answer? A,B,C or D\n")
         time.sleep(1)
-        answer = input("My answer is ").lower()
+        answer = input("My answer is \n").lower()
         time.sleep(1)
         current_answer = questions_list[question_index + 1][2].lower()
         possible_answers = ["a", "b", "c", "d"]
@@ -106,19 +106,18 @@ def save_answer():
                     score = score + 1
                 print(f"Thank you for your answer.\n \
                     \n\nThe correct answer was {current_answer}\n")
-                print(f"Your current score is {score}")
+                print(f"Your current score is {score} \n")
                 time.sleep(2)
                 break
         except ValueError as error:
             print(f"Invalid data: {error}, please try again.\n")
 
 
-def display_results():
-    """
+"""def display_results():
+    
     Target score and actual score are compared and the results are returned
-    """
+    
     print(f"Your final score is {score}")
-    users_goal = target_score
     time.sleep(2)
     if score > users_goal:
         print(f"Sadly, your target score was {users_goal} \
@@ -132,6 +131,7 @@ def display_results():
         print(f"Congratulations! Your target was {users_goal} \
             but you scored {score}")
         print("You are much smarter than you think you are!")
+"""
 
 
 def initialise_questions():
@@ -149,8 +149,11 @@ def main():
         ask_question()
         save_answer()
         question_index = question_index + 1
-    display_results()
-    print("Thank you for playing")
+    "display_results()"
+    print("Your final score was...")
+    time.sleep(3)
+    print(f"...{score}")
+    print("Thank you for playing \n\n ")
     print("(Dan Roberts 2023)")
 
 
