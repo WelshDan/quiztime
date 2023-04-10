@@ -1,31 +1,41 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+#QUIZTIME
 
-Welcome WelshDan,
+Quiztime is a Python terminal game, which uses the mock terminal by Code Institute on Heroku.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+The quiz is played by one player, who answers 10 questions to see how many they can answer.
 
-## Reminders
+## HOW TO PLAY
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## FEATURES
 
-## Creating the Heroku app
+Players set a goal before playing to see if they can beat their target score.
+Players answer a set of 10 general knowledge questions by pressing the A, B, C or D keys on hthe keyboard and pressing enter. Their scores are logged and at the end of the quiz they will find out their final score to see if they have beaten their target.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### Existing features
 
-1. `heroku/python`
-2. `heroku/nodejs`
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+### Future features
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+There are two other sets of 10 questions waiting to be uploaded so there are more questions that could be added onto the game.
 
-Connect your GitHub repository and deploy as normal.
+## TESTING
 
-## Constraints
+### Bugs
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+#### Removed Bugs
 
------
-Happy coding!
+#### Remaining Bugs
+
+#### Validator testing
+
+PEP8 - online test
+
+## DEPLOYMENT
+
+The project was deployed using the mock terminal made by Code Institute on Herokus website.
+
+## CREDITS
+
+GURU99.com - time delay function
+https://www.guru99.com/python-time-sleep-delay.html#:~:text=Python%20sleep()%20is%20a,the%20execution%20of%20your%20code.
+Akhsat Garg - my mentor

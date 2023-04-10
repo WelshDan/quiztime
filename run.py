@@ -64,8 +64,7 @@ def target_score():
             if users_goal is target:
                 raise ValueError(
                     f"Your target must be between 1 and 10, \
-                        you provided {users_goal}"
-                    )
+                        you provided {users_goal}")
         except ValueError as error:
             print(f"Invalid data: {error}, please try again.\n")
             return False
@@ -105,8 +104,8 @@ def save_answer():
             else:
                 if questions_list[question_index + 1][2].lower() == answer:
                     score = score + 1
-                print(f"Thank you for your answer.\n\
-                    \n\nThe correct answer was {current_answer}")
+                print(f"Thank you for your answer.\n \
+                    \n\nThe correct answer was {current_answer}\n")
                 print(f"Your current score is {score}")
                 time.sleep(2)
                 break
@@ -121,8 +120,8 @@ def display_results():
     print(f"Your final score is {score}")
     users_goal = target_score
     time.sleep(2)
-    if users_goal > score:
-        print(f"Sadly, your target score was {users_goal}\
+    if score > users_goal:
+        print(f"Sadly, your target score was {users_goal} \
             but you only got {score}.")
         print("You are not as clever as you think")
     elif score == users_goal:
@@ -130,12 +129,9 @@ def display_results():
             and you matched that it!")
         print(f"You scored {score}. You know exactly how clever you are!")
     else:
-        print(f"Congratulations! Your target was {users_goal}\
+        print(f"Congratulations! Your target was {users_goal} \
             but you scored {score}")
         print("You are much smarter than you think you are!")
-
-
-
 
 
 def initialise_questions():
@@ -154,7 +150,7 @@ def main():
         save_answer()
         question_index = question_index + 1
     display_results()
-    print("Thank you for taking part in the quiz")
+    print("Thank you for playing")
     print("(Dan Roberts 2023)")
 
 
