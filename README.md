@@ -29,13 +29,15 @@ Colours could be added to make the game more dynamic
 
 ## TESTING
 
+The code has been run through the PEP8 validator online program.
+
 ### Bugs
 
 #### Removed Bugs
 
 #### Remaining Bugs
 
-
+A function called display results which compares the final score and the target score to return a comment about the result has been commented out in the code.
 
 #### Validator testing
 

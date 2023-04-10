@@ -39,7 +39,7 @@ def player_name():
     """
     print("Please enter your name")
 
-    username = input("My name is ")
+    username = input("My name is \n")
     time.sleep(2)
     print(f"Welcome {username}!")
     time.sleep(2)
