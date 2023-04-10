@@ -4,9 +4,17 @@ Quiztime is a Python terminal game that uses the mock terminal by Code Institute
 
 This general knowledge quiz is played by one player. Can they beat their own target?
 
+![Screenshot](assets/images/pic0.jpg)
+
 ## HOW TO PLAY
 
 Quiztime is a general knowledge game where a player answers questions, having 4 alternatives to choose from. The questions are taken from a range of subjects. The game continues until all 10 questions are answered.
+
+![Screenshot](assets/images/pic1.jpg)
+
+![Screenshot](assets/images/pic2.jpg)
+
+![Screenshot](assets/images/pic3.jpg)
 
 ### Features
 
