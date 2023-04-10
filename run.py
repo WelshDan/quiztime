@@ -53,24 +53,24 @@ def target_score():
     \n repeat until a figure between 1 and 10 is entered.
     """
     while True:
-        print("The quiz contains " + str(total_questions) + " questions.\
+        print("The quiz contains " + str(total_questions) + " questions.\n \
             What is your target score?\n")
         time.sleep(2)
-        target_score = int(input("My goal is: "))
+        users_goal = int(input("My goal is: "))
         time.sleep(2)
         target = range(1, 10)
-        print(f"OK, good luck trying to get more than {target_score}!")
+        print(f"OK, good luck trying to get more than {users_goal}!")
         try:
-            if target_score is target:
+            if users_goal is target:
                 raise ValueError(
                     f"Your target must be between 1 and 10, \
-                        you provided {target_score}"
+                        you provided {users_goal}"
                     )
         except ValueError as error:
             print(f"Invalid data: {error}, please try again.\n")
             return False
         else:
-            print("Can you beat that target?")
+            print("You sure you are up for it?")
             time.sleep(2)
             return True
 
@@ -82,7 +82,7 @@ def ask_question():
     """
     question = questions_list[question_index + 1]
     print(f" Here is question {question[0]}...\n")
-    time.sleep(2)
+    time.sleep(1)
     print(question[1])
 
 
@@ -94,10 +94,10 @@ def save_answer():
     global score
     while True:
         print("What is your answer? A,B,C or D\n")
-        time.sleep(2)
+        time.sleep(1)
         answer = input("My answer is ").lower()
-        time.sleep(2)
-        print(f"You've guessed answer {answer}")
+        time.sleep(1)
+        current_answer = questions_list[question_index + 1][2].lower()
         possible_answers = ["a", "b", "c", "d"]
         try:
             if answer not in possible_answers:
@@ -105,8 +105,10 @@ def save_answer():
             else:
                 if questions_list[question_index + 1][2].lower() == answer:
                     score = score + 1
-                print("Thank you for your answer.")
-                time.sleep(3)
+                print(f"Thank you for your answer.\n\
+                    \n\nThe correct answer was {current_answer}")
+                print(f"Your current score is {score}")
+                time.sleep(2)
                 break
         except ValueError as error:
             print(f"Invalid data: {error}, please try again.\n")
@@ -114,24 +116,26 @@ def save_answer():
 
 def display_results():
     """
-    Target score and actual score are compared and the results are returned.
+    Target score and actual score are compared and the results are returned
     """
-    if total_questions == 10:
-        print(f"Your final score is {score}")
-        return target_score
-        time.sleep(2)
-    if score > target_score:
-        print(f"Sadly, your target score was {target_score}\
+    print(f"Your final score is {score}")
+    users_goal = target_score
+    time.sleep(2)
+    if users_goal > score:
+        print(f"Sadly, your target score was {users_goal}\
             but you only got {score}.")
         print("You are not as clever as you think")
-    if score == target_score:
-        print(f"Well done! Your target score was {target_score} \
+    elif score == users_goal:
+        print(f"Well done! Your target score was {users_goal} \
             and you matched that it!")
         print(f"You scored {score}. You know exactly how clever you are!")
-    if score < target_score:
-        print(f"Congratulations! Your target was {target_score}\
+    else:
+        print(f"Congratulations! Your target was {users_goal}\
             but you scored {score}")
         print("You are much smarter than you think you are!")
+
+
+
 
 
 def initialise_questions():
@@ -149,7 +153,7 @@ def main():
         ask_question()
         save_answer()
         question_index = question_index + 1
-        display_results()
+    display_results()
     print("Thank you for taking part in the quiz")
     print("(Dan Roberts 2023)")
 
