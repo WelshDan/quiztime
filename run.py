@@ -13,7 +13,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('quiztime')
 
-questions = SHEET.worksheet('Alist')
+questions = SHEET.worksheet('blist')
 
 total_questions = 10
 score = 0
@@ -37,12 +37,17 @@ def player_name():
     """
     Get username from the user
     """
-    print("Please enter your name")
 
-    username = input("My name is \n")
-    time.sleep(2)
-    print(f"Welcome {username}!")
-    time.sleep(2)
+    while True:
+        username = input("Please enter your username: ").strip()
+        if username.strip():  # Check if the stripped username is not empty
+            return username  # Return the username if it's valid
+        else:
+            print("Invalid username. Username cannot be empty or contain only spaces.")
+        
+        time.sleep(2)
+        print(f"Welcome {username}!")
+        time.sleep(2)
 
 
 def target_score():
@@ -113,25 +118,25 @@ def save_answer():
             print(f"Invalid data: {error}, please try again.\n")
 
 
-"""def display_results():
-    
+def display_results(users_goal, score):
+    """
     Target score and actual score are compared and the results are returned
-    
+    """
     print(f"Your final score is {score}")
     time.sleep(2)
+
     if score > users_goal:
-        print(f"Sadly, your target score was {users_goal} \
-            but you only got {score}.")
+        print(f"Sadly, your target score was {users_goal} "
+            f"but you only got {score}.")
         print("You are not as clever as you think")
     elif score == users_goal:
-        print(f"Well done! Your target score was {users_goal} \
-            and you matched that it!")
+        print(f"Well done! Your target score was {users_goal} "
+            f"and you matched that it!")
         print(f"You scored {score}. You know exactly how clever you are!")
     else:
-        print(f"Congratulations! Your target was {users_goal} \
-            but you scored {score}")
+        print(f"Congratulations! Your target was {users_goal} "
+            f"but you scored {score}")
         print("You are much smarter than you think you are!")
-"""
 
 
 def initialise_questions():
@@ -149,7 +154,7 @@ def main():
         ask_question()
         save_answer()
         question_index = question_index + 1
-    "display_results()"
+    display_results(users_goal, score)
     print("Your final score was...")
     time.sleep(3)
     print(f"...{score}")
