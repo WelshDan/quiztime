@@ -6,7 +6,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+   ]
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -58,20 +58,19 @@ def target_score():
         time.sleep(2)
         users_goal = int(input("My goal is: "))
         time.sleep(2)
-        target = range(1, 10)
+        target = range(1, 11)
         print(f"OK, good luck trying to get more than {users_goal}!")
         try:
-            if users_goal is target:
+            if users_goal not in target:
                 raise ValueError(
-                    f"Your target must be between 1 and 10, \
-                        you provided {users_goal}")
+                    f"Your target must be between 1 and 10. You provided {users_goal}")
         except ValueError as error:
             print(f"Invalid data: {error}, please try again.\n")
             return False
         else:
             print("You sure you are up for it?")
             time.sleep(2)
-            return True
+            return {users_goal}
 
 
 def ask_question():
