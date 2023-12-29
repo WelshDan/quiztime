@@ -37,17 +37,12 @@ def player_name():
     """
     Get username from the user
     """
+    print("Please enter your name")
 
-    while True:
-        username = input("Please enter your username: ").strip()
-        if username.strip():  # Check if the stripped username is not empty
-            return username  # Return the username if it's valid
-        else:
-            print("Invalid username. Username cannot be empty or contain only spaces.")
-        
-        time.sleep(2)
-        print(f"Welcome {username}!")
-        time.sleep(2)
+    username = input("My name is \n")
+    time.sleep(2)
+    print(f"Welcome {username}!")
+    time.sleep(2)
 
 
 def target_score():
