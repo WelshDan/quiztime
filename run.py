@@ -68,7 +68,7 @@ def target_score():
             print(f"Invalid data: {error}, please try again.\n")
             return False
         else:
-            print("You sure you are up for it?")
+            print("Are you sure you are up to it?")
             time.sleep(2)
             return {users_goal}
 
@@ -143,11 +143,11 @@ def main():
     initialise_questions()
     welcome_screen()
     player_name()
-    target_score()
+    users_goal = target_score()
     while question_index < total_questions:
         ask_question()
         save_answer()
-        question_index = question_index + 1
+        question_index += 1
     display_results(users_goal, score)
     print("Your final score was...")
     time.sleep(3)
