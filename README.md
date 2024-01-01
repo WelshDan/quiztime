@@ -71,3 +71,11 @@ GURU99.com - time delay function
 (https://www.guru99.com/python-time-sleep-delay.html#:~:text=Python%20sleep()%20is%20a,the%20execution%20of%20your%20code)
 
 Akhsat Garg - mentor at Code Institute
+
+Problem with not loading:
+Ran: pip3 install pycairo - got error 
+Ran: sudo apt install libcairo2-dev pkg-config python3-dev
+Ran: pip3 install pycairo - succeeded
+ran: pip install gspread
+transferred creds.json file in
+Success!

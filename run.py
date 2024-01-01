@@ -1,6 +1,6 @@
+import time
 import gspread
 from google.oauth2.service_account import Credentials
-import time
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -28,7 +28,7 @@ def welcome_screen():
     print("Hello!")
     time.sleep(2)
     print("and welcome to...")
-    time.sleep(2)
+    time.sleep(3)
     print("QUIZTIME")
     time.sleep(2)
 
@@ -57,7 +57,7 @@ def target_score():
             What is your target score?\n")
         time.sleep(2)
         users_goal = int(input("My goal is: "))
-        time.sleep(2)
+        time.sleep(1)
         target = range(1, 11)
         print(f"OK, good luck trying to get more than {users_goal}!")
         try:
@@ -80,7 +80,7 @@ def ask_question():
     """
     question = questions_list[question_index + 1]
     print(f" Here is question {question[0]}...\n")
-    time.sleep(1)
+    time.sleep(2)
     print(question[1])
 
 
@@ -92,9 +92,9 @@ def save_answer():
     global score
     while True:
         print("What is your answer? A,B,C or D\n")
-        time.sleep(1)
+        time.sleep(2)
         answer = input("My answer is \n").lower()
-        time.sleep(1)
+        time.sleep(2)
         current_answer = questions_list[question_index + 1][2].lower()
         possible_answers = ["a", "b", "c", "d"]
         try:
@@ -120,16 +120,22 @@ def display_results(users_goal, score):
     time.sleep(2)
 
     if score > users_goal:
-        print(f"Sadly, your target score was {users_goal} "
-            f"but you only got {score}.")
+        print(f"Sadly, your target score was {users_goal}")
+        time.sleep(1)
+        print(f"but you only got {score}.")
+        time.sleep(1)
         print("You are not as clever as you think")
     elif score == users_goal:
-        print(f"Well done! Your target score was {users_goal} "
-            f"and you matched that it!")
+        print(f"Well done! Your target score was {users_goal}")
+        time.sleep(1)
+        print("and you matched that it!")
+        time.sleep(1)
         print(f"You scored {score}. You know exactly how clever you are!")
     else:
-        print(f"Congratulations! Your target was {users_goal} "
-            f"but you scored {score}")
+        print(f"Congratulations! Your target was {users_goal}")
+        time.sleep(1)
+        print(f"but you scored {score}")
+        time.sleep(1)
         print("You are much smarter than you think you are!")
 
 
