@@ -43,6 +43,7 @@ def player_name():
     time.sleep(2)
     print(f"Welcome {username}!")
     time.sleep(2)
+    username = {username}
 
 
 def target_score():
@@ -110,19 +111,21 @@ def save_answer():
                 break
         except ValueError as error:
             print(f"Invalid data: {error}, please try again.\n")
+        {score} = final_score
+        return final_score
 
 
-def display_results(users_goal, score):
+def display_results(users_goal, final_score):
     """
     Target score and actual score are compared and the results are returned
     """
-    print(f"Your final score is {score}")
+    print(f"Your final score is {final_score}")
     time.sleep(2)
 
     if score > users_goal:
         print(f"Sadly, your target score was {users_goal}")
         time.sleep(1)
-        print(f"but you only got {score}.")
+        print(f"but you only got {final_score}.")
         time.sleep(1)
         print("You are not as clever as you think")
     elif score == users_goal:
@@ -130,11 +133,11 @@ def display_results(users_goal, score):
         time.sleep(1)
         print("and you matched that it!")
         time.sleep(1)
-        print(f"You scored {score}. You know exactly how clever you are!")
+        print(f"You scored {final_score}. You know exactly how clever you are!")
     else:
         print(f"Congratulations! Your target was {users_goal}")
         time.sleep(1)
-        print(f"but you scored {score}")
+        print(f"but you scored {final_score}")
         time.sleep(1)
         print("You are much smarter than you think you are!")
 
@@ -144,8 +147,21 @@ def initialise_questions():
     questions_list = questions.get_values()
 
 
+def save_scores(username, final_score):
+    """
+    Name and score from quiz are saved if quiz is completed. It is stored in the
+    connected worksheet in the part called "results"
+    """
+    print("Scores are being saved to the history books")
+    saves_worksheet = SHEET.worksheet("results")
+    name = {username}
+    data = [name, final_score]
+    saves_worksheet.append_row(data)
+
+
 def main():
     global question_index
+    global score
     initialise_questions()
     welcome_screen()
     player_name()
@@ -158,6 +174,7 @@ def main():
     print("Your final score was...")
     time.sleep(3)
     print(f"...{score}")
+    save_scores(name, final_score)
     print("Thank you for playing \n\n ")
     print("(Dan Roberts 2023)")
 
