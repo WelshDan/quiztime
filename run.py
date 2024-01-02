@@ -19,6 +19,7 @@ total_questions = 10
 score = 0
 questions_list = []
 question_index = 0
+USERNAME = ""
 
 
 def welcome_screen():
@@ -39,15 +40,15 @@ def get_player_name():
     stop users entering a blank name
     """
     while True:
-        username = input("Please enter your name: ")
-        if username.strip():
+        USERNAME = input("Please enter your name: ")
+        if USERNAME.strip():
             break
-        print("Name cannot be empt. Please enter your name")
+        print("Name cannot be empty. Please enter your name")
 
     time.sleep(2)
-    print(f"Welcome {username}!")
+    print(f"Welcome {USERNAME}!")
     time.sleep(2)
-    return username
+    return USERNAME
 
 
 def target_score():
@@ -62,17 +63,17 @@ def target_score():
         print("What is your target score?\n")
         time.sleep(2)
         try:
-            users_goal = int(input("My goal is: "))
+            users_goal = int(input("My goal is: \n"))
             time.sleep(1)
             if users_goal not in range(1, 11):
-                raise ValueError(f"Your target must be between 1 and 10. You provided {users_goal}")
+                raise ValueError(f"Your target must be between 1 and 10. You provided {users_goal}\n")
         except ValueError as error:
             print(f"Invalid data: {error}, please try again.\n")
         else:
             if users_goal <= 5:
-                print(f" {users_goal} is quite a low target, you should get more than that!")
+                print(f" {users_goal} is quite a low target, you should get more than that!\n")
             else:
-                print(f"Challenging target! Best of luck trying to beat {users_goal}!")
+                print(f"Challenging target! Best of luck trying to beat {users_goal}!\n")
             return {users_goal}
 
 
@@ -117,46 +118,40 @@ def save_answer():
                 break
         except ValueError as error:
             print(f"Invalid data: {error}, please try again.\n")
-        score = final_score
-        return final_score
 
 
-def display_results(users_goal, final_score):
+def display_results(users_goal):
     """
     Target score and actual score are compared and the results are returned
     """
-    print(f"Your final score is {final_score}")
+    print(f"Your final score is {score}")
     time.sleep(2)
 
-    if final_score > users_goal:
-        print(f"Sadly, your target score was {users_goal} but you only got {final_score}.")
+    if score > users_goal:
+        print(f"Sadly, your target score was {users_goal} but you only got {score}.")
         time.sleep(1)
         print("You are not as clever as you think")
-    elif final_score == users_goal:
+    elif score == users_goal:
         print(f"Well done! Your target score was {users_goal} and you matched that it!")
         time.sleep(1)
         print("You are exactly as clever as you think you are!")
     else:
-        print(f"Congratulations! Your target was {users_goal} but you scored {final_score}!")
+        print(f"Congratulations! Your target was {users_goal} but you scored {score}!")
         time.sleep(1)
         print("You are much smarter than you think you are!")
+
+    print("Scores are being saved to the history books")
+    saves_worksheet = SHEET.worksheet("results")
+    data = [USERNAME, score]
+    saves_worksheet.append_row(data)
+
+    print("Thank you for playing \n\n ")
+    print("(Dan Roberts 2023)")
 
 
 def initialise_questions():
     global questions_list
     questions_list = questions.get_values()
-
-
-def save_scores(username, final_score):
-    """
-    Name and score from quiz are saved if quiz is completed. It is stored in the
-    connected worksheet in the part called "results"
-    """
-    print("Scores are being saved to the history books")
-    saves_worksheet = SHEET.worksheet("results")
-    name = {username}
-    data = [name, final_score]
-    saves_worksheet.append_row(data)
 
 
 def main():
@@ -170,13 +165,7 @@ def main():
         ask_question()
         save_answer()
         question_index += 1
-    display_results(users_goal, final_score)
-    print("Your final score was...")
-    time.sleep(3)
-    print(f"...{score}")
-    save_scores(name, final_score)
-    print("Thank you for playing \n\n ")
-    print("(Dan Roberts 2023)")
+    display_results(users_goal)
 
 
 main()
