@@ -35,9 +35,15 @@ def welcome_screen():
 
 def get_player_name():
     """
-    Get username from the user
+    Get username from the user. A while loop with a true check to
+    stop users entering a blank name
     """
-    username = input("Please enter your name: ")
+    while True:
+        username = input("Please enter your name: ")
+        if username.strip():
+            break
+        print("Name cannot be empt. Please enter your name")
+
     time.sleep(2)
     print(f"Welcome {username}!")
     time.sleep(2)
@@ -67,8 +73,6 @@ def target_score():
             print(f"Invalid data: {error}, please try again.\n")
             return False
         else:
-            print("Are you sure you are up to it?")
-            time.sleep(2)
             return {users_goal}
 
 
@@ -121,21 +125,15 @@ def display_results(users_goal, final_score):
     time.sleep(2)
 
     if final_score > users_goal:
-        print(f"Sadly, your target score was {users_goal}")
-        time.sleep(1)
-        print(f"but you only got {final_score}.")
+        print(f"Sadly, your target score was {users_goal} but you only got {final_score}.")
         time.sleep(1)
         print("You are not as clever as you think")
     elif final_score == users_goal:
-        print(f"Well done! Your target score was {users_goal}")
+        print(f"Well done! Your target score was {users_goal} and you matched that it!")
         time.sleep(1)
-        print("and you matched that it!")
-        time.sleep(1)
-        print(f"You scored {final_score}. You know exactly how clever you are!")
+        print("You are exactly as clever as you think you are!")
     else:
-        print(f"Congratulations! Your target was {users_goal}")
-        time.sleep(1)
-        print(f"but you scored {final_score}")
+        print(f"Congratulations! Your target was {users_goal} but you scored {final_score}!")
         time.sleep(1)
         print("You are much smarter than you think you are!")
 
@@ -168,7 +166,7 @@ def main():
         ask_question()
         save_answer()
         question_index += 1
-    display_results(users_goal, score)
+    display_results(users_goal, final_score)
     print("Your final score was...")
     time.sleep(3)
     print(f"...{score}")
