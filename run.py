@@ -33,17 +33,15 @@ def welcome_screen():
     time.sleep(2)
 
 
-def player_name():
+def get_player_name():
     """
     Get username from the user
     """
-    print("Please enter your name")
-
-    username = input("My name is \n")
+    username = input("Please enter your name: ")
     time.sleep(2)
     print(f"Welcome {username}!")
     time.sleep(2)
-    username = {username}
+    return username
 
 
 def target_score():
@@ -111,7 +109,7 @@ def save_answer():
                 break
         except ValueError as error:
             print(f"Invalid data: {error}, please try again.\n")
-        {score} = final_score
+        score = final_score
         return final_score
 
 
@@ -122,13 +120,13 @@ def display_results(users_goal, final_score):
     print(f"Your final score is {final_score}")
     time.sleep(2)
 
-    if score > users_goal:
+    if final_score > users_goal:
         print(f"Sadly, your target score was {users_goal}")
         time.sleep(1)
         print(f"but you only got {final_score}.")
         time.sleep(1)
         print("You are not as clever as you think")
-    elif score == users_goal:
+    elif final_score == users_goal:
         print(f"Well done! Your target score was {users_goal}")
         time.sleep(1)
         print("and you matched that it!")
@@ -164,7 +162,7 @@ def main():
     global score
     initialise_questions()
     welcome_screen()
-    player_name()
+    get_player_name()
     users_goal = target_score()
     while question_index < total_questions:
         ask_question()
