@@ -58,21 +58,21 @@ def target_score():
     \n repeat until a figure between 1 and 10 is entered.
     """
     while True:
-        print("The quiz contains " + str(total_questions) + " questions.\n \
-            What is your target score?\n")
+        print("The quiz contains " + str(total_questions) + " questions.\n")
+        print("What is your target score?\n")
         time.sleep(2)
-        users_goal = int(input("My goal is: "))
-        time.sleep(1)
-        target = range(1, 11)
-        print(f"OK, good luck trying to get more than {users_goal}!")
         try:
-            if users_goal not in target:
-                raise ValueError(
-                    f"Your target must be between 1 and 10. You provided {users_goal}")
+            users_goal = int(input("My goal is: "))
+            time.sleep(1)
+            if users_goal not in range(1, 11):
+                raise ValueError(f"Your target must be between 1 and 10. You provided {users_goal}")
         except ValueError as error:
             print(f"Invalid data: {error}, please try again.\n")
-            return False
         else:
+            if users_goal <= 5:
+                print(f" {users_goal} is quite a low target, you should get more than that!")
+            else:
+                print(f"Challenging target! Best of luck trying to beat {users_goal}!")
             return {users_goal}
 
 
