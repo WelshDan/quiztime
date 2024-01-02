@@ -53,9 +53,9 @@ def get_player_name():
 def target_score():
     """
     Get user's target score out of 10. Run a while loop to collect the
-    players guess of their correct answer \n target, via
-    the terminal which has to be a number between 1 and 10. The loop will
-    \n repeat until a figure between 1 and 10 is entered.
+    players guess of their correct answer target, via the terminal which
+    has to be a number between 1 and 10. The loop will repeat until a
+    number between 1 and 10 is entered.
     """
     while True:
         print("The quiz contains " + str(total_questions) + " questions.\n")
@@ -108,6 +108,10 @@ def save_answer():
                     score = score + 1
                 print(f"Thank you for your answer.\n \
                     \n\nThe correct answer was {current_answer}\n")
+                if answer == current_answer:
+                    print(f"Good answer, {current_answer} was correct!")
+                else:
+                    print(f"The answer {current_answer} was incorrect")
                 print(f"Your current score is {score} \n")
                 time.sleep(2)
                 break
