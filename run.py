@@ -13,7 +13,9 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('quiztime')
 
-questions = SHEET.worksheet('blist')
+easy_questions = SHEET.worksheet('easy')
+medium_questions = SHEET.worksheet('medium')
+hard_questions = SHEET.worksheet('hard')
 
 total_questions = 10
 score = 0
@@ -50,6 +52,41 @@ def get_player_name():
     time.sleep(2)
     return USERNAME
 
+
+def users_difficulty():
+    """
+    User is to select one of three options: easy, medium or hard.
+    The options are connected to three different tabs of the worksheet
+    with containing a set of easy, medium or hard questions
+    """
+    print("You will now need to choose the difficulty level of the quiz \n")
+    time.sleep(1)
+    print("You can select from easy, medium or hard\n")
+    time.sleep(1)
+    print("Select your difficulty by pressing 1,2 or 3 and then enter\n")
+    time.sleep(1)
+    print("1 = Easy , 2 = Medium, 3 = Hard\n")
+    time.sleep(1)
+
+    try:
+        users_difficulty = int(input("My choice is: \n"))
+        time.sleep(1)
+        if users_difficulty not in range(1, 4):
+            raise ValueError(f"You must choose either 1,2 or 3. You provided {users_difficulty}\n")
+    except ValueError as error:
+        print(f"Invalid data: {error}, please try again.\n")
+    else:
+        if users_difficulty == 1:
+            users_difficulty == easy_questions
+            print("You have chosen an easy difficulty level\n")
+        elif users_difficulty == 2:
+            users_difficulty == medium_questions
+            print("You have chosen an medium difficulty level\n")
+        else:
+            users_difficulty == hard_questions
+            print("You have chosen an hard difficulty level\n")
+        return users_difficulty
+        
 
 def target_score():
     """
@@ -149,17 +186,18 @@ def display_results(users_goal):
     print("(Dan Roberts 2023)")
 
 
-def initialise_questions():
+def initialise_questions(users_difficulty):
     global questions_list
-    questions_list = questions.get_values()
+    questions_list = users_difficulty.get_values()
 
 
 def main():
     global question_index
     global score
-    initialise_questions()
+    initialise_questions(users_difficulty)
     welcome_screen()
     get_player_name()
+    users_difficulty()
     users_goal = target_score()
     while question_index < total_questions:
         ask_question()
