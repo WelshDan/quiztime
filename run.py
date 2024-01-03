@@ -36,11 +36,11 @@ def show_welcome_screencreen():
     """
     Start screen that welcomes the user
     """
-    print("Hello!")
+    print("Hello!\n")
     # time.sleep(2)
-    print("and welcome to...")
+    print("and welcome to...\n")
     # time.sleep(3)
-    print("QUIZTIME")
+    print("QUIZTIME\n")
     # time.sleep(2)
 
 
@@ -112,7 +112,7 @@ def target_score():
                 raise ValueError(f"Your target must be between 1 and 10. You provided {users_goal}\n")
             else:
                 if users_goal <= 5:
-                    print(f" {users_goal} is quite a low target, you should get more than that!\n")
+                    print(f"{users_goal} is your score to bear, good luck!\n")
                 else:
                     print(f"Challenging target! Best of luck trying to beat {users_goal}!\n")
                 break
@@ -128,7 +128,7 @@ def ask_question():
         until all 10 questions are asked.
     """
     question = questions_list[question_index + 1]
-    print(f" Here is question {question[0]}...\n")
+    print(f"Here is question {question[0]}...\n")
     # time.sleep(2)
     print(question[1])
 
@@ -140,7 +140,7 @@ def accept_answer():
     """
     global score
     while True:
-        print("What is your answer? A,B,C or D\n")
+        print("What is your answer? (A,B,C or D)\n")
         # time.sleep(2)
         answer = input("My answer is \n").lower()
         # time.sleep(2)
@@ -148,14 +148,14 @@ def accept_answer():
         possible_answers = ["a", "b", "c", "d"]
         try:
             if answer not in possible_answers:
-                raise ValueError("You can only answer with A, B, C or D")
+                raise ValueError("You can only answer with A, B, C or D\n")
             else:
                 if answer == correct_answer:
                     score = score + 1
-                    print(f"Good answer, {correct_answer} was correct!")
+                    print(f"Good answer, {correct_answer} was correct!\n")
                 else:
                     print(f"Thank you for your answer.\nThe correct answer was {correct_answer}\n")
-                    print(f"The answer {answer} was incorrect")
+                    print(f"The answer {answer} was incorrect\n")
                 print(f"Your current score is {score} \n")
                 # time.sleep(2)
                 break
@@ -167,23 +167,23 @@ def display_results(username, users_goal):
     """
     Target score and actual score are compared and the results are returned
     """
-    print(f"Your final score is {score}")
+    print(f"Your final score is {score}\n")
     # time.sleep(2)
 
     if score > users_goal:
-        print(f"Sadly, your target score was {users_goal} but you only got {score}.")
+        print(f"Sadly, your target score was {users_goal} but you only got {score}\n")
         # time.sleep(1)
-        print("You are not as clever as you think")
+        print("You just missed your target, bad luck!\n")
     elif score == users_goal:
-        print(f"Well done! Your target score was {users_goal} and you matched that it!")
+        print(f"Well done! Your target score was {users_goal} and you matched that it!\n")
         # time.sleep(1)
-        print("You are exactly as clever as you think you are!")
+        print("You hit your goal, well done!\n")
     else:
         print(f"Congratulations! Your target was {users_goal} but you scored {score}!")
         # time.sleep(1)
-        print("You are much smarter than you think you are!")
+        print("You beat your goal! Excellent work!\n")
 
-    print("Scores are being saved to the history books")
+    print("Scores are being saved to the history books\n")
     data = [username, score]
     saves_worksheet = SHEET.worksheet("results")
     saves_worksheet.append_row(data)
