@@ -77,16 +77,24 @@ def users_difficulty():
         print(f"Invalid data: {error}, please try again.\n")
     else:
         if users_difficulty == 1:
-            users_difficulty == easy_questions
             print("You have chosen an easy difficulty level\n")
         elif users_difficulty == 2:
-            users_difficulty == medium_questions
             print("You have chosen an medium difficulty level\n")
         else:
-            users_difficulty == hard_questions
             print("You have chosen an hard difficulty level\n")
         return users_difficulty
-        
+
+
+def initialise_questions(users_difficulty):
+    global questions_list
+    if users_difficulty == 1:
+        question_set = easy_questions
+    elif users_difficulty == 2:
+        question_set = medium_questions
+    elif users_difficulty == 3:
+        question_set = hard_questions
+    questions_list = question_set.get_values()
+
 
 def target_score():
     """
@@ -111,7 +119,7 @@ def target_score():
                 print(f" {users_goal} is quite a low target, you should get more than that!\n")
             else:
                 print(f"Challenging target! Best of luck trying to beat {users_goal}!\n")
-            return {users_goal}
+        return {users_goal}
 
 
 def ask_question():
@@ -178,26 +186,21 @@ def display_results(users_goal):
         print("You are much smarter than you think you are!")
 
     print("Scores are being saved to the history books")
-    saves_worksheet = SHEET.worksheet("results")
     data = [USERNAME, score]
+    saves_worksheet = SHEET.worksheet("results")
     saves_worksheet.append_row(data)
 
     print("Thank you for playing \n\n ")
     print("(Dan Roberts 2023)")
 
 
-def initialise_questions(users_difficulty):
-    global questions_list
-    questions_list = users_difficulty.get_values()
-
-
 def main():
     global question_index
     global score
-    initialise_questions(users_difficulty)
     welcome_screen()
     get_player_name()
     users_difficulty()
+    initialise_questions(users_difficulty)
     users_goal = target_score()
     while question_index < total_questions:
         ask_question()
