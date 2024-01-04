@@ -112,7 +112,7 @@ def target_score():
                 raise ValueError(f"Your target must be between 1 and 10. You provided {users_goal}\n")
             else:
                 if users_goal <= 5:
-                    print(f"{users_goal} is your score to bear, good luck!\n")
+                    print(f"{users_goal} is your score to beat, good luck!\n")
                 else:
                     print(f"Challenging target! Best of luck trying to beat {users_goal}!\n")
                 break
@@ -124,8 +124,8 @@ def target_score():
 
 def ask_question():
     """
-    Locate the first question in the list. Repeat \
-        until all 10 questions are asked.
+    Locate the first question in the list. Repeat until the
+    total questions are asked.
     """
     question = questions_list[question_index + 1]
     print(f"Here is question {question[0]}...\n")
@@ -142,10 +142,10 @@ def accept_answer():
     while True:
         print("What is your answer? (A,B,C or D)\n")
         # time.sleep(0.5)
-        answer = input("My answer is \n").lower()
+        answer = input("My answer is \n").upper()
         # time.sleep(0.5)
         correct_answer = questions_list[question_index + 1][2].lower()
-        possible_answers = ["a", "b", "c", "d"]
+        possible_answers = ["A", "B", "C", "D"]
         try:
             if answer not in possible_answers:
                 raise ValueError("You can only answer with A, B, C or D\n")
@@ -175,13 +175,13 @@ def display_results(username, users_goal):
         # time.sleep(0.5)
         print("You just missed your target, bad luck!\n")
     elif score == users_goal:
-        print(f"Well done! Your target score was {users_goal} and you matched that it!\n")
+        print(f"Well done! Your target score was {users_goal} and you matched it!\n")
         # time.sleep(0.5)
-        print("You hit your goal, well done!\n")
+        print("You hit your target, well done!\n")
     else:
-        print(f"Congratulations! Your target was {users_goal} but you scored {score}!")
+        print(f"Congratulations! Your target was {users_goal} and you scored {score}!")
         # time.sleep(0.5)
-        print("You beat your goal! Excellent work!\n")
+        print("You beat it! Excellent work!\n")
 
     print("Scores are being saved to the history books\n")
     # time.sleep(0.5)
@@ -189,7 +189,7 @@ def display_results(username, users_goal):
     saves_worksheet = SHEET.worksheet("results")
     saves_worksheet.append_row(data)
 
-    print("Thank you for playing \n\n ")
+    print("Thank you for playing\n ")
     # time.sleep(0.5)
     print("(Created by Dan Roberts 2023)")
 
