@@ -144,7 +144,7 @@ def accept_answer():
         # time.sleep(0.5)
         answer = input("My answer is \n").upper()
         # time.sleep(0.5)
-        correct_answer = questions_list[question_index + 1][2].lower()
+        correct_answer = questions_list[question_index + 1][2].upper()
         possible_answers = ["A", "B", "C", "D"]
         try:
             if answer not in possible_answers:
@@ -170,7 +170,7 @@ def display_results(username, users_goal):
     print(f"Your final score is {score}\n")
     # time.sleep(0.5)
 
-    if score > users_goal:
+    if score < users_goal:
         print(f"Sadly, your target score was {users_goal} but you only got {score}\n")
         # time.sleep(0.5)
         print("You just missed your target, bad luck!\n")
@@ -178,7 +178,7 @@ def display_results(username, users_goal):
         print(f"Well done! Your target score was {users_goal} and you matched it!\n")
         # time.sleep(0.5)
         print("You hit your target, well done!\n")
-    else:
+    elif score > users_goal:
         print(f"Congratulations! Your target was {users_goal} and you scored {score}!")
         # time.sleep(0.5)
         print("You beat it! Excellent work!\n")
