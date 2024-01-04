@@ -1,6 +1,12 @@
 import time
 import gspread
 from google.oauth2.service_account import Credentials
+from rich import print
+from rich.console import Console
+from rich.theme import Theme
+
+custom_theme = Theme({"success": "green", "error": "red", "question": "cyan", "info": "yellow", "command": "blue"})
+console = Console(theme=custom_theme)
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -36,9 +42,9 @@ def show_welcome_screencreen():
     """
     Start screen that welcomes the user
     """
-    print("Hello!\n")
+    console.print("Hello!\n", style="info")
     # time.sleep(0.5)
-    print("and welcome to...\n")
+    console.print("and welcome to...\n", style="info")
     # time.sleep(1)
     print("QUIZTIME\n")
     # time.sleep(0.5)
@@ -53,10 +59,10 @@ def get_player_name():
         username = input("Please enter your name: ")
         if username.strip():
             break
-        print("Name cannot be empty. Please enter your name\n")
+        console.print("Name cannot be empty. Please enter your name\n", style="error")
 
     # time.sleep(0.5)
-    print(f"Welcome {username}!\n")
+    console.print(f"Welcome {username}!\n", style="info")
     # time.sleep(0.5)
     return username
 
@@ -67,13 +73,13 @@ def choose_difficulty():
     The options are connected to three different tabs of the worksheet
     with containing a set of easy, medium or hard questions
     """
-    print("You will now need to choose the difficulty level of the quiz \n")
+    console.print("You will now need to choose the difficulty level of the quiz \n", style="info")
     # time.sleep(0.5)
-    print("You can select from easy, medium or hard\n")
+    console.print("You can select from easy, medium or hard\n", style="info")
     # time.sleep(0.5)
-    print("Select your difficulty by pressing 1,2 or 3 and then enter\n")
+    console.print("Select your difficulty by pressing 1,2 or 3 and then enter\n", style="command")
     # time.sleep(0.5)
-    print("1 = Easy , 2 = Medium, 3 = Hard\n")
+    console.print("1 = Easy , 2 = Medium, 3 = Hard\n", style="info")
     # time.sleep(0.5)
 
     while True:
@@ -82,10 +88,10 @@ def choose_difficulty():
             if users_difficulty not in range(1, 4):
                 raise ValueError(f"You must choose either 1,2 or 3. You provided {users_difficulty}")
             else:
-                print("You have chosen an " + DIFFICULTY_LEVEL_TO_NAME_MAP[users_difficulty] + " difficulty level\n")
+                console.print("You have chosen an " + DIFFICULTY_LEVEL_TO_NAME_MAP[users_difficulty] + " difficulty level\n", style="info")
                 return users_difficulty    
         except ValueError as error:
-            print(f"Invalid data: {error}. Please try again.\n")
+            console.print(f"Invalid data: {error}. Please try again.\n", style="error")
  
 
 def initialise_questions(difficulty):
@@ -102,8 +108,8 @@ def target_score():
     """
     users_goal = None
     while True:
-        print("The quiz contains " + str(TOTAL_QUESTIONS) + " questions.\n")
-        print("What is your target score?\n")
+        console.print("The quiz contains " + str(TOTAL_QUESTIONS) + " questions.\n", style="info")
+        console.print("What is your target score?\n", style="command")
         # time.sleep(0.5)
         try:
             users_goal = int(input("My goal is: \n"))
@@ -112,12 +118,12 @@ def target_score():
                 raise ValueError(f"Your target must be between 1 and 10. You provided {users_goal}\n")
             else:
                 if users_goal <= 5:
-                    print(f"{users_goal} is your score to beat, good luck!\n")
+                    console.print(f"{users_goal} is your score to beat, good luck!\n", style="info")
                 else:
-                    print(f"Challenging target! Best of luck trying to beat {users_goal}!\n")
+                    console.print(f"Challenging target! Best of luck trying to beat {users_goal}!\n", style="info")
                 break
         except ValueError as error:
-            print(f"Invalid data: {error}Please try again.\n")
+            console.print(f"Invalid data: {error}Please try again.\n", style="error")
         
     return users_goal
 
@@ -128,9 +134,9 @@ def ask_question():
     total questions are asked.
     """
     question = questions_list[question_index + 1]
-    print(f"Here is question {question[0]}...\n")
+    console.print(f"Here is question {question[0]}...\n", style="info")
     # time.sleep(0.5)
-    print(question[1])
+    console.print(question[1], style="question")
 
 
 def accept_answer():
@@ -140,7 +146,7 @@ def accept_answer():
     """
     global score
     while True:
-        print("What is your answer? (A,B,C or D)\n")
+        console.print("What is your answer? (A,B,C or D)\n", style="command")
         # time.sleep(0.5)
         answer = input("My answer is \n").upper()
         # time.sleep(0.5)
@@ -152,46 +158,46 @@ def accept_answer():
             else:
                 if answer == correct_answer:
                     score = score + 1
-                    print(f"Good answer, {correct_answer} was correct!\n")
+                    console.print(f"Good answer, {correct_answer} was correct!\n", style="success")
                 else:
-                    print(f"Thank you for your answer.\nThe correct answer was {correct_answer}\n")
-                    print(f"The answer {answer} was incorrect\n")
-                print(f"Your current score is {score} \n")
+                    console.print(f"Thank you for your answer.\nThe correct answer was {correct_answer}\n", style="info")
+                    console.print(f"The answer {answer} was incorrect\n", style="error")
+                console.print(f"Your current score is {score} \n", style="info")
                 # time.sleep(0.5)
                 break
         except ValueError as error:
-            print(f"Invalid data: {error}Please try again.\n")
+            console.print(f"Invalid data: {error}Please try again.\n", style="error")
 
 
 def display_results(username, users_goal):
     """
     Target score and actual score are compared and the results are returned
     """
-    print(f"Your final score is {score}\n")
+    console.print(f"Your final score is {score}\n", style="info")
     # time.sleep(0.5)
 
     if score < users_goal:
-        print(f"Sadly, your target score was {users_goal} but you only got {score}\n")
+        console.print(f"Sadly, your target score was {users_goal} but you only got {score}\n", style="error")
         # time.sleep(0.5)
-        print("You just missed your target, bad luck!\n")
+        console.print("You just missed your target, bad luck!\n", style="error")
     elif score == users_goal:
-        print(f"Well done! Your target score was {users_goal} and you matched it!\n")
+        console.print(f"Well done! Your target score was {users_goal} and you matched it!\n", style="info")
         # time.sleep(0.5)
-        print("You hit your target, well done!\n")
+        console.print("You hit your target, well done!\n", style="info")
     elif score > users_goal:
-        print(f"Congratulations! Your target was {users_goal} and you scored {score}!")
+        console.print(f"Congratulations! Your target was {users_goal} and you scored {score}!", style="success")
         # time.sleep(0.5)
-        print("You beat it! Excellent work!\n")
+        console.print("You beat it! Excellent work!\n", style="success")
 
-    print("Scores are being saved to the history books\n")
+    console.print("Scores are being saved to the history books\n", style="info")
     # time.sleep(0.5)
     data = [username, score]
     saves_worksheet = SHEET.worksheet("results")
     saves_worksheet.append_row(data)
 
-    print("Thank you for playing\n ")
+    console.print("Thank you for playing\n ", style="info")
     # time.sleep(0.5)
-    print("(Created by Dan Roberts 2023)")
+    console.print("(Created by Dan Roberts 2023)")
 
 def start_quiz(username, users_goal):
     global question_index

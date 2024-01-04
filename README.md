@@ -79,3 +79,13 @@ Ran: pip3 install pycairo - succeeded
 ran: pip install gspread
 transferred creds.json file in
 Success!
+
+https://www.youtube.com/watch?v=4zbehnz-8QU
+Color and text format:
+pip install rich
+from rich import print ( adds color to numbers)
+from rich.console import Console (add color to by adding console to print ie console.print and adding stylings)
+from rich.text import Text (same as above but more individual)
+from rich.theme import Theme (add themes and then repeat using console.print and adding stylings code)
+    emojis can also be added for example :apple adds an apple emoji
+from rich.Table import Table (table.add_column etc or table.add_row)
