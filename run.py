@@ -5,6 +5,11 @@ from rich import print
 from rich.console import Console
 from rich.theme import Theme
 
+    """
+    Color stylings added by the rich import - pip install rich. The custom_theme is set so adding "console." to the print commands
+    and entering the styling of for example (style="info") in the print field adds the chosen color scheme to the text.
+    Also by using the "rich import print", it highlights all numbers with colors.
+    """
 custom_theme = Theme({"success": "green", "error": "red", "question": "cyan", "info": "yellow", "command": "blue", "quiztime": "bold magenta"})
 console = Console(theme=custom_theme)
 
@@ -19,7 +24,10 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('quiztime')
 
-
+    """
+    The Difficulty level to name map and sheet name map are used to connect the quiz to the exce files
+    containing the quiz questions
+    """
 DIFFICULTY_LEVEL_TO_NAME_MAP = {
     1: "Easy",
     2: "Medium",
@@ -95,6 +103,9 @@ def choose_difficulty():
  
 
 def initialise_questions(difficulty):
+    """
+    Using the difficulty level set in choose_difficulty, the correct questions are loaded.
+    """
     global questions_list
     question_set = SHEET.worksheet(DIFFICULTY_LEVEL_TO_SHEET_NAME_MAP[difficulty])
     questions_list = question_set.get_values()
