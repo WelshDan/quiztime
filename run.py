@@ -53,10 +53,10 @@ def get_player_name():
         username = input("Please enter your name: ")
         if username.strip():
             break
-        print("Name cannot be empty. Please enter your name")
+        print("Name cannot be empty. Please enter your name\n")
 
     # time.sleep(0.5)
-    print(f"Welcome {username}!")
+    print(f"Welcome {username}!\n")
     # time.sleep(0.5)
     return username
 
@@ -80,12 +80,12 @@ def choose_difficulty():
         try:
             users_difficulty = int(input("My choice is: \n"))
             if users_difficulty not in range(1, 4):
-                raise ValueError(f"You must choose either 1,2 or 3. You provided {users_difficulty}\n")
+                raise ValueError(f"You must choose either 1,2 or 3. You provided {users_difficulty}")
             else:
                 print("You have chosen an " + DIFFICULTY_LEVEL_TO_NAME_MAP[users_difficulty] + " difficulty level\n")
                 return users_difficulty    
         except ValueError as error:
-            print(f"Invalid data: {error}, please try again.\n")
+            print(f"Invalid data: {error}. Please try again.\n")
  
 
 def initialise_questions(difficulty):
@@ -117,7 +117,7 @@ def target_score():
                     print(f"Challenging target! Best of luck trying to beat {users_goal}!\n")
                 break
         except ValueError as error:
-            print(f"Invalid data: {error}, please try again.\n")
+            print(f"Invalid data: {error}Please try again.\n")
         
     return users_goal
 
@@ -160,7 +160,7 @@ def accept_answer():
                 # time.sleep(0.5)
                 break
         except ValueError as error:
-            print(f"Invalid data: {error}, please try again.\n")
+            print(f"Invalid data: {error}Please try again.\n")
 
 
 def display_results(username, users_goal):

@@ -4,7 +4,7 @@ Quiztime is a Python terminal game that uses the mock terminal by Code Institute
 
 This general knowledge quiz is played by one player. Can they beat their own target?
 
-![Screenshot](assets/images/pic0.jpg)
+![Screenshot of start screen taken using https://techsini.com/multi-mockup/index.php](assets/images/pic0.jpg)
 
 ## HOW TO PLAY
 
@@ -51,7 +51,7 @@ A function called display results which compares the final score and the target 
 
 PEP8 - online test
 
-![Screenshot](assets/images/PEP8%20check.jpg)
+![Screenshot](assets/images/PEP8check.jpg)
 
 ## DEPLOYMENT
 
