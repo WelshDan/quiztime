@@ -31,12 +31,14 @@ This general knowledge quiz is played by one player. They set a target but can t
     6.1 Resolved issues<br/>
     6.2 Unresolved issues<br/>
     6.3 Possible future developments<br/>
-    6.4 Validator testing<br/>
 7. Deployment<br/>
     7.1 Github deployment<br/>
-    7.2 Link<br/>
-9. Credits<br/>
-    9.1 Credits, references and thanks<br/>
+    7.2 Heroku deployment<br/>
+    7.3 Setting up an API in Google sheets<br/>
+8. Credits<br/>
+    8.1 Credits<br/>
+    8.2 References<br/>
+    8.3 Thanks<br/>
 
 ---------------
 
@@ -382,7 +384,28 @@ Using the feedback from the assessor, I created a table with issues that were ra
 
 #### 6.2 Unresolved issues
 
+Taking the two points from **5.1 Manual Testing** - **Tests without expected outcome**
+- Test nr.3 - Choose difficulty level<br>
+On entering a letter instead of a number, the following message is displayed:
+“Invalid data: invalid literal for int() with base 10: 'a'Please try again.”<br>
+There should be an extra error handling inserted to replace that text
 
+- Test nr.6 - Target score<br>
+On entering a letter instead of a number, the following message is displayed:
+“Invalid data: invalid literal for int() with base 10: 'a'Please try again.”<br>
+There should be an extra error handling inserted to replace that text
+
+There have been issues with some of the dependencies on the requirements.txt file and when starting up a new workspace in Codeanywhere after a bug, and loading up the requirements.txt, I had lots more dependencies that were necessary and they started to give me problems during depolyment (see the deployment picture below). Since I created this new workspace, upon loading up the workspace in Codeanywhere to work in the workspace, I have to complete a few installation steps before the errors are cleared.<br>
+The following dependencies need to be installed and in this order:
+- sudo apt install libcairo2-dev pkg-config python3-dev
+- pip3 install pycairo
+- pip install gspread
+- pip install -r requirements.txt
+- python3 run.py
+
+I have had many deployment issues linked to the dependency issues. Upon tutor assistance, I removed the following files that had stopped deployment and created more issues afterwards:
+
+![Screenshot from heroku deployment failure](assets/images/heroku_error.jpg)
 
 #### 6.3 Possible future developments<br/>
 
@@ -396,66 +419,146 @@ The following improvements could be made to raise the playability or quality lev
 - Difficulty levels could have different number of multiple choices options (for example, easy = A or B, medium = A, B or C, hard = A, B, C or D
 - Logging answers to all questions to see if questions were suitable or to correct their difficulty level according to user results
 
+---------
 
-### Features
-
-  This score is out of 10.
-   
-
-### Existing features
-
-One player game
-Player plans to beat their projected final score
-Questions appear one at a time
-Input validation and error checking
-All four possible answer alternatives are used during the quiz
-
-### Future features
-
-New questions to be added
-Players could type in their answer
-Colours could be added to make the game more dynamic
-
-### Bugs
-
-#### Removed Bugs
-
-#### Remaining Bugs
-
-
-
-## DEPLOYMENT
+## 7. Deployment
 
 The project was deployed using the mock terminal made by Code Institute on Herokus website.
 
-## CREDITS
+#### 7.1 Github deployment
 
-### Deployment
+**Steps to deploy in Github**
 
-Code Institute for deployment terminal
-Quiztime deployed via Heroku
-Quiztime is an idea created and deployed by Dan Roberts 2023
+To deploy in Github, you'll need to do the following things once logged in:
+- Choose your repository
+- Click on Settings
+- Click on Pages
 
-### Help and guidance
+![Screenshot from github's "settings" page](assets/images/github_deployment_one.jpg)
 
-GURU99.com - time delay function
-(https://www.guru99.com/python-time-sleep-delay.html#:~:text=Python%20sleep()%20is%20a,the%20execution%20of%20your%20code)
+- Under Source, select "Deploy from a branch"
 
-Akhsat Garg - mentor at Code Institute
+![Screenshot from github's "pages" page](assets/images/github_deployment_two.jpg)
 
-Problem with not loading:
-sudo apt install libcairo2-dev pkg-config python3-dev
-pip3 install pycairo
-pip install gspread
-pip install -r requirements.txt
-python3 run.py
+- Under Branch, make sure your branch is set to "main" and then that the "/(root)" is selected
+- Save
 
-https://www.youtube.com/watch?v=4zbehnz-8QU
-Color and text format:
-pip install rich
-from rich import print ( adds color to numbers)
-from rich.console import Console (add color to by adding console to print ie console.print and adding stylings)
-from rich.theme import Theme (add themes and then repeat using console.print and adding stylings code)
+#### 7.2 Heroku deployment
 
-Excel sheet to markdown table convertor
-https://tabletomarkdown.com/convert-spreadsheet-to-markdown/
+**Steps to deploy in Heroku**
+
+To deploy in Heroku, you'll need to do the following things once logged in:
+- Click on the "New" icon on the right-hand side of the page
+- Choose "Create new app"
+
+![Screenshot from the Heroku main page](assets/images/heroku_deploy_one.jpg)
+
+- Enter a name for your app
+- Choose your region (USA or Europe)
+- Click on "Create app"
+
+![Screenshot from the Heroku create app page](assets/images/heroku_deploy_two.jpg)
+
+Next three stages and images are only if you will be linking a google docs sheet to your app!
+- Click to go to Settings
+- Click to open the Config Vars
+
+![Screenshot from the Heroku settings page](assets/images/heroku_deploy_three.jpg)
+
+- Add in the first config var enter "CREDS" in the first slot and then copy in the information from your downloaded API file information that you received when you connected your google sheets file to your workspace.
+
+![Screenshot from the Heroku config vars section](assets/images/heroku_creds.jpg)
+
+- Make sure you have a creds.json file in your workspace with the same information
+
+![Screenshot from workspace creds.json file](assets/images/heroku-deploy_four.jpg)
+
+The final part to the deployment is to connect your Heroku app to Github:
+- Click on the Deploy tab
+- Select the "Deploy to Github" option in the middle
+- Make sure it is connected as shown in this final image
+
+![Screenshot from the Heroku deploy section](assets/images/heroku_deploy_five.jpg)
+
+Further information can be found on the Heroku site [here](https://devcenter.heroku.com/articles/git)
+
+#### 7.3 Setting up an API in Google sheets
+
+**Steps to set up an API in Google sheets to connect to your workspace**
+
+Basic steps to create an API are as follows:
+- Create an account / Log in to your account
+- Create a new Google Sheets file
+- Name it with the same name as your new app
+- Go into [Google Cloud APIs](https://cloud.google.com/apis)
+- Click on "API manager"
+- Create a new project and choose a name that matches your app
+
+![Screenshot from the Google APIS creating a new project](assets/images/api_new_one.jpg)
+
+- Click on "Credentials"
+- Choose "Google Drive API" from the dropdown box
+- Click in "Application data" and "No I'm not using them" on the next choice, click "Next"
+
+![Screenshot from the Love Sandwiches CI project - entering credentials type](assets/images/api_new_two.jpg)
+
+- Enter your service account name, an email address is automatically created from this name
+
+![Screenshot from the Love Sandwiches CI project - choose service account](assets/images/api_new_three.jpg)
+
+- Select "Editor" in the dropdown box to grant this service account to project
+
+![Screenshot from the Love Sandwiches CI project - grant access for service account to project](assets/images/api_new_four.jpg)
+
+- Ignore options here and click "Done"
+
+![Screenshot from the Love Sandwiches CI project - other service account details](assets/images/api_new_five.jpg)
+
+- Click to choose your newly created service account 
+
+![Screenshot from the Love Sandwiches CI project - credentials list](assets/images/api_new_six.jpg)
+
+- Click on your service account and then click on "Keys"
+
+![Screenshot from the Love Sandwiches CI project - service account list](assets/images/api_new_seven.jpg)
+
+- Click on "Add Key" dropdown then "Create new key"
+- Create a json private key
+- Download the file
+
+![Screenshot from the Love Sandwiches CI project - service account list](assets/images/api_new_eight.jpg)
+
+- Copy this file into your workspace and rename it to creds.json
+- This is the same file that is mentioned in the Heroku set up
+- Run "pip install gspread" on your workspace and you now have the framework to have a connected excel file
+
+--------
+
+## 8. Credits
+
+#### 8.1 Credits
+
+**Code Institute**
+The Love Sandwiches module for the google API images as used in the Google Sheets deployment (7.3)
+Akshat Garg - my mentor, who has helped, demonstrated and motivated
+
+**Three Amigos Quiz**
+For their quiz questions
+
+#### References
+
+**Time delay function**
+[GURU99.com](https://www.guru99.com/python-time-sleep-delay.html#:~:text=Python%20sleep()%20is%20a,the%20execution%20of%20your%20code)
+
+**pip install rich**
+[Guide](https://www.youtube.com/watch?v=4zbehnz-8QU)
+
+**Markdown convertor**
+[Excel sheet to markdown table convertor](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/)
+
+
+#### Thanks
+
+**Thanks to my family for their patience**
+To Akshat Garg for his help as mentor
+The assessor for their feedback in the previous submission
