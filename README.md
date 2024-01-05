@@ -350,8 +350,51 @@ PEP8 - online test
 
 ![Screenshot from pep8 check](assets/images/PEP8check.jpg)
 
-After running a website checker, it returned the following issues:
+After running a [website checker](https://try.powermapper.com/Demo/Report/f1734f42-b9fa-48aa-bd3b-01e384b57678), it returned the following issues:
 - *Critical*	This page has no h1 element, which violates Bing webmaster guidelines.
+Have now added an h1 element to index.html
+
+![Screenshot from added html heading](assets/images/added_h1_in_html.jpg)
+
+Also in the report from powermapper, it shows that it is compatible with the following webpages:
+
+![Screenshot from added html heading](assets/images/webpage_checker.jpg)
+
+-----------
+
+## 6. Issues & Bugs
+
+#### 6.1 Resolved issues
+
+Using the feedback from the assessor, I created a table with issues that were raised so I could accurately improve the key points that they have raised through my assessment feedback
+
+| Feedback point                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Ideas/Method                                                                                                                                                             | Done? |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----- |
+| Overall functionality works well with minor bugs                                                                                                                                                                                                                                                                                                                                                                                                                                    | Remove bugs                                                                                                                                                              | Yes   |
+| The recorded features in the README file indicate that the Python function is working correctly, but it lacks some customized designs to make the interaction more complex. The code has passed the PEP8 check, but known bugs have not been resolved. The project is designed to be simple and user-friendly, with clear on-screen options for the user. Error handling should be improved so that the program will not break easily. The program accepts blank input and crashes. | Customized designs are lacking<br>Error handling needs to be improved<br>Program accepts blank input then crashes                                                        | Yes   |
+| The inconsistent flow of data between functions causes the application to break                                                                                                                                                                                                                                                                                                                                                                                                     | Improve flow of data between functions                                                                                                                                   | Yes   |
+| The system includes a suitable mechanism to handle empty or invalid input data for the answer inputs. However, there is no error handling on the username inputs and the goal score inputs. The invalid input can break the program easily. Please also ensure the goal score should not allow to be more than 10.                                                                                                                                                                  | No error handling on username inputs and goal score inputs<br>Ensure the goal score should not allow to be more than 10                                                  | Yes   |
+| Absence of Exception/error handling causes the application to crash                                                                                                                                                                                                                                                                                                                                                                                                                 | Exception/error handling needed                                                                                                                                          | Yes   |
+| The PEP8 validation tool is mentioned in the README file, and results are documented, but detailed testing steps and guidelines are missing. Please also add the details to the testing section.                                                                                                                                                                                                                                                                                    | Detailed testing steps are missing<br>Add details to the testing section README                                                                                          | Yes   |
+| This project used the external resource - google sheets to store the quiz questions. But the current interactions are not complex enough. Please dive deeper into this project and add more advanced manipulation functionality. You can consider storing the username and result on the external data resource or setting up different difficulty levels.                                                                                                                          | Add more advanced manipulation functionality with google sheets<br>Consider storing username and result on external data resource of setting different difficulty levels | Yes   |
+| There are only 17 commits in this project, and some are too large. Please make sure that all commits cover small individual changes with descriptive messages                                                                                                                                                                                                                                                                                                                       | Make commits more often and detail exact changes!                                                                                                                        | Yes   |
+| The submitted version contains too much commented-out code.                                                                                                                                                                                                                                                                                                                                                                                                                         | Remove commented out code                                                                                                                                                | Yes   |
+
+#### 6.2 Unresolved issues
+
+
+
+#### 6.3 Possible future developments<br/>
+
+The following improvements could be made to raise the playability or quality level of this project:
+- Quizzes could be made longer
+- Instead of easy/medium/hard, the quiz could have topics (i.e. Sports, Films, Science etc)
+- Stored data could include a “score of the month” showing” the highest score per difficulty or by user
+- Design could be improved to create a more aesthetic user experience
+- A restart button could be introduced so players could start over by just clicking a button
+- More questions can easily be added due to the use of a database to store questions
+- Difficulty levels could have different number of multiple choices options (for example, easy = A or B, medium = A, B or C, hard = A, B, C or D
+- Logging answers to all questions to see if questions were suitable or to correct their difficulty level according to user results
 
 
 ### Features
@@ -373,25 +416,13 @@ New questions to be added
 Players could type in their answer
 Colours could be added to make the game more dynamic
 
-## TESTING
-
-The code has been run through the PEP8 validator online program.
-
 ### Bugs
 
 #### Removed Bugs
 
 #### Remaining Bugs
 
-A function called display results which compares the final score and the target score to return a comment about the result has been commented out in the code.
 
-#### Validator testing
-
-PEP8 - online test
-
-![Screenshot from pep8 check](assets/images/PEP8check.jpg)
-
-![Screenshot of start screen taken using https://techsini.com/multi-mockup/index.php](assets/images/multi_device_website_check.jpg)
 
 ## DEPLOYMENT
 
@@ -426,3 +457,5 @@ from rich import print ( adds color to numbers)
 from rich.console import Console (add color to by adding console to print ie console.print and adding stylings)
 from rich.theme import Theme (add themes and then repeat using console.print and adding stylings code)
 
+Excel sheet to markdown table convertor
+https://tabletomarkdown.com/convert-spreadsheet-to-markdown/
