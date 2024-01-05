@@ -336,6 +336,10 @@ There should be an extra error handling inserted to replace that text
 
 #### 5.2 Other tests
 
+Deployed to Heroku - final deployment
+
+![Screenshot showing the final build and deployment before submission](assets/images/heroku_deployment_final.jpg)
+
 Multi Device Website Mockup Generator
 
 ![Screenshot of start screen taken using https://techsini.com/multi-mockup/index.php](assets/images/multi_device_website_check.jpg)
