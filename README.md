@@ -1,25 +1,93 @@
-#QUIZTIME
+# QUIZTIME
+![Favicon image](assets/images/favicon-32x32.png)
 
 Quiztime is a Python terminal game that uses the mock terminal by Code Institute on Heroku.
 
-This general knowledge quiz is played by one player. Can they beat their own target?
+This general knowledge quiz is played by one player. They set a target but can they beat it?
 
-![Screenshot of start screen taken using https://techsini.com/multi-mockup/index.php](assets/images/pic0.jpg)
+---------------
 
-## HOW TO PLAY
+## Table of contents
+
+1. How to play Quiztime<br/>
+    1.1 Basic Rules<br/>
+2. Planning<br/>
+    2.1 Aim of simplicity<br/>
+    2.2 Used languages<br/>
+3. Layout & Design<br/>
+    3.1 Website structure<br/>
+    3.2 Page layout<br/>
+    3.3 Icons<br/>
+4. Description of game screen<br/>
+    4.1 Interactive parts<br/>
+    4.2 Non-interactive parts<br/>
+5. Important code functions<br/>
+    5.1 JavaScript functions<br/>
+    5.2 Python start code<br/>
+6. Testing, issues & Bugs<br/>
+    6.1 Online tests<br/>
+    6.2 Manual testing<br/>
+7. Issues & Bugs<br/>
+    7.1 Resolved issues<br/>
+    7.2 Unresolved issues<br/>
+    7.3 Possible future developments<br/>
+    7.4 Validator testing<br/>
+8. Deployment<br/>
+    8.1 Github deployment<br/>
+    8.2 Link<br/>
+9. 404 page<br/>
+    9.1 Page layout<br/>
+    9.2 Interactive parts<br/>
+    9.3 Non-interactive parts<br/>
+10. Credits<br/>
+    10.1 Credits, references and thanks<br/>
+
+---------------
+
+## 1. How to play
 
 Quiztime is a general knowledge game where a player answers questions, having 4 alternatives to choose from. The questions are taken from a range of subjects. The game continues until all 10 questions are answered.
 
+
+
+![Screenshot of start screen taken using https://techsini.com/multi-mockup/index.php](assets/images/multi_device_website_check.jpg)
+
+#### 1.1 Basic Rules:
+
+The game starts...
+
 ![Screenshot](assets/images/pic1.jpg)
+
+...and the player enters their chosen name.
+
+![Screenshot](assets/images/pic1.jpg)
+
+...and then a target score for them to try and beat.
 
 ![Screenshot](assets/images/pic2.jpg)
 
+The player will then be shown 10 questions and the 4 alternative answers. The players enter their answers by pressing the A, B, C or D keys on the keyboard and pressing enter.
+
 ![Screenshot](assets/images/pic3.jpg)
+
+Their score is checked and then the correct answer is shown.
+
+![Screenshot](assets/images/pic3.jpg)
+
+Their running score is logged.
+
+![Screenshot](assets/images/pic3.jpg)
+
+Once the 10th question is answered, that score checked then the final score is revealed and also if the user beat their target score!
+
+![Screenshot](assets/images/pic3.jpg)
+
+Their results are then saved and stored in the same database that stores the questions
 
 ### Features
 
-The player first enters their name and then a target score for them to try and beat. This score is out of 10.
-The player will then be shown 10 questions and the 4 alternative answers. The players enter their answers by pressing the A, B, C or D keys on the keyboard and pressing enter. Their score is checked and then the correct answer is shown. Their running score is logged. Once the 10th question is answered and that score checked then the final score is revealed.
+  This score is out of 10.
+   
 
 ### Existing features
 
@@ -73,19 +141,16 @@ GURU99.com - time delay function
 Akhsat Garg - mentor at Code Institute
 
 Problem with not loading:
-Ran: pip3 install pycairo - got error 
-Ran: sudo apt install libcairo2-dev pkg-config python3-dev
-Ran: pip3 install pycairo - succeeded
-ran: pip install gspread
-transferred creds.json file in
-Success!
+sudo apt install libcairo2-dev pkg-config python3-dev
+pip3 install pycairo
+pip install gspread
+pip install -r requirements.txt
+python3 run.py
 
 https://www.youtube.com/watch?v=4zbehnz-8QU
 Color and text format:
 pip install rich
 from rich import print ( adds color to numbers)
 from rich.console import Console (add color to by adding console to print ie console.print and adding stylings)
-from rich.text import Text (same as above but more individual)
 from rich.theme import Theme (add themes and then repeat using console.print and adding stylings code)
-    emojis can also be added for example :apple adds an apple emoji
-from rich.Table import Table (table.add_column etc or table.add_row)
+
