@@ -1,7 +1,7 @@
 # QUIZTIME
 ![Favicon image](assets/images/favicon-32x32.png)
 
-Quiztime is a Python terminal game that uses the mock terminal by Code Institute on Heroku.
+**Quiztime is a Python terminal game that uses the mock terminal by Code Institute on Heroku**
 
 This general knowledge quiz is played by one player. They set a target but can they beat it?
 
@@ -9,13 +9,15 @@ This general knowledge quiz is played by one player. They set a target but can t
 
 ## Table of contents
 
-1. How to play Quiztime<br/>
-    1.1 Basic Rules<br/>
+1. What is Quiztime?<br/>
+    1.1 Brief introduction<br/>
+    1.2 Basic mechanics<br/>
+    1.3 Link to Quiztime<br/>
 2. Planning<br/>
-    2.1 Aim of simplicity<br/>
-    2.2 Used languages<br/>
-3. Layout & Design<br/>
-    3.1 Website structure<br/>
+    2.1 What? Why? Who?<br/>
+    2.2 User Stories<br/>
+3. Gameplay & Design<br/>
+    3.1 Gameplay<br/>
     3.2 Page layout<br/>
     3.3 Icons<br/>
 4. Description of game screen<br/>
@@ -44,15 +46,55 @@ This general knowledge quiz is played by one player. They set a target but can t
 
 ---------------
 
-## 1. How to play
-
-Quiztime is a general knowledge game where a player answers questions, having 4 alternatives to choose from. The questions are taken from a range of subjects. The game continues until the chosen set of 10 questions are answered.
+## 1. What is Quiztime?
 
 
+#### 1.1 Brief Intruction
 
-![Screenshot of start screen taken using https://techsini.com/multi-mockup/index.php](assets/images/multi_device_website_check.jpg)
+- Quiztime is a general knowledge game
+- There are 3 difficulty levels to choose from
+- Users set their target for correct answers before they start
+- Questions come with 4 possible answers alternatives to choose from
+- When all 10 questions are answered, the scores and targets are checked and logged
 
-#### 1.1 Basic Rules:
+#### 1.2 Basic mechanics
+
+- Quiztime is run on a mock Python terminal created by Code Institute
+- It is connected to an excel file which not only supplies the questions but stores the results
+- The project is deployed via Heroku
+
+#### 1.3 Link to Quiztime
+
+Quiztime can be found using this [link](https://quiztime.herokuapp.com/)
+
+---------------
+
+## 2. Planning
+
+#### 2.1 What? Why? Who?
+
+What is the project about?
+
+- This project aims to show the python terminal and several functions that show that a simple Python project can create a basic but interesting game
+
+Why choose this project?
+
+- I am interesting in quizzes and so it was interesting to me to design a quiz game using this (relatively) simplistic form of Python
+- This was very challenging but it has also helped me to learn more not only about Python but coding in general
+
+Who is this project aimed at?
+
+- The kind of people who I feel would like this project would either be people interested in general knowledge quizzes or people who have an interest in how Python can work
+
+#### 2.2 User Stories
+
+
+
+
+
+
+
+#### 1.1 Gameplay and screenshots:
 
 The game starts...
 
@@ -91,7 +133,8 @@ The player will then be shown the first question and it's 4 alternative answers.
 
 ![Screenshot of the first question in the easy category and four alternative answers](assets/images/q1_easy.jpg)
 
-The players enter their answers by pressing the A, B, C or D keys on the keyboard and pressing enter. The answer is revealed and their current score is also updating after every answer.
+The players enter their answers by pressing the A, B, C or D keys on the keyboard and pressing enter.
+The answer is revealed and their current score is also updating after every answer.
 
 An incorrect answer give a score of 0 for that question
 
@@ -101,20 +144,25 @@ While a correct answer gives a score of 1 for that question
 
 ![Screenshot of the result of a correct answer and the score being add is 1](assets/images/q1_correct_answer.jpg)
 
-A total of 10 questions
-Their score is checked and then the correct answer is shown.
+After all 10 questions are answered, the results of the quiz and if the target was beaten are calculated
+If the user doesn't beat their target
 
-![Screenshot](assets/images/pic3.jpg)
+![Screenshot of the message that the user has not beaten their target](assets/images/missed_target.jpg)
 
-Their running score is logged.
+If the user matches their target
 
-![Screenshot](assets/images/pic3.jpg)
+![Screenshot of the message that the user has matched their target](assets/images/matched_target.jpg)
 
-Once the 10th question is answered, that score checked then the final score is revealed and also if the user beat their target score!
+If the user beats their target
 
-![Screenshot](assets/images/pic3.jpg)
+![Screenshot of the message that the user has beaten their target](assets/images/beat_target.jpg)
 
-Their results are then saved and stored in the same database that stores the questions
+Their results are then saved and stored in the same database that stores the questions and the final message is displayed
+
+![Screenshot of the message that the users results have been saved, thanks for playing and the author & date](assets/images/final_message.jpg)
+
+
+
 
 ### Features
 
@@ -152,6 +200,8 @@ A function called display results which compares the final score and the target 
 PEP8 - online test
 
 ![Screenshot](assets/images/PEP8check.jpg)
+
+![Screenshot of start screen taken using https://techsini.com/multi-mockup/index.php](assets/images/multi_device_website_check.jpg)
 
 ## DEPLOYMENT
 
