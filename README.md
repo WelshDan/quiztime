@@ -46,7 +46,7 @@ This general knowledge quiz is played by one player. They set a target but can t
 
 ## 1. How to play
 
-Quiztime is a general knowledge game where a player answers questions, having 4 alternatives to choose from. The questions are taken from a range of subjects. The game continues until all 10 questions are answered.
+Quiztime is a general knowledge game where a player answers questions, having 4 alternatives to choose from. The questions are taken from a range of subjects. The game continues until the chosen set of 10 questions are answered.
 
 
 
@@ -56,20 +56,52 @@ Quiztime is a general knowledge game where a player answers questions, having 4 
 
 The game starts...
 
-![Screenshot](assets/images/pic1.jpg)
+![Screenshot of welcome text](assets/images/basic_rules_start.jpg)
 
-...and the player enters their chosen name.
+...and the player enters their chosen name
 
-![Screenshot](assets/images/pic1.jpg)
+![Screenshot of player having chosen their name](assets/images/enter_name.jpg)
 
-...and then a target score for them to try and beat.
+The user will be asked what their chosen difficulty level of their 10 questions would be
 
-![Screenshot](assets/images/pic2.jpg)
+![Screenshot of choice of difficulty](assets/images/choose_difficulty.jpg)
 
-The player will then be shown 10 questions and the 4 alternative answers. The players enter their answers by pressing the A, B, C or D keys on the keyboard and pressing enter.
+They can choose between easy
 
-![Screenshot](assets/images/pic3.jpg)
+![Screenshot of after the easy choice is taken](assets/images/easy_difficulty.jpg)
 
+medium
+
+![Screenshot of after the medium choice is taken](assets/images/medium_difficulty.jpg)
+
+or hard
+
+![Screenshot of after the hard choice is taken](assets/images/hard_difficulty.jpg)
+
+Their next choice is to set their target. They can choose between 1 and 10.
+If they set 1 and 5
+
+![Screenshot of choosing a target of 3](assets/images/goal_onetofive.jpg)
+
+or between 6 and 10
+
+![Screenshot of choosing a target of 6](assets/images/goal_sixtoten.jpg)
+
+The player will then be shown the first question and it's 4 alternative answers. 
+
+![Screenshot of the first question in the easy category and four alternative answers](assets/images/q1_easy.jpg)
+
+The players enter their answers by pressing the A, B, C or D keys on the keyboard and pressing enter. The answer is revealed and their current score is also updating after every answer.
+
+An incorrect answer give a score of 0 for that question
+
+![Screenshot of the result of a wrong answer and the score being added is 0](assets/images/q1_wrong_answer.jpg)
+
+While a correct answer gives a score of 1 for that question
+
+![Screenshot of the result of a correct answer and the score being add is 1](assets/images/q1_correct_answer.jpg)
+
+A total of 10 questions
 Their score is checked and then the correct answer is shown.
 
 ![Screenshot](assets/images/pic3.jpg)

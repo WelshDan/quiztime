@@ -175,7 +175,7 @@ def display_results(username, users_goal):
     """
     Target score and actual score are compared and the results are returned
     """
-    console.print(f" our final score is {score}\n", style="info")
+    console.print(f" Your final score is {score}\n", style="info")
     time.sleep(0.5)
 
     if score < users_goal:
