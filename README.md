@@ -1,11 +1,12 @@
 # QUIZTIME
+
 ![Favicon image](assets/images/favicon-32x32.png)
 
 **Quiztime is a Python terminal game that uses the mock terminal by Code Institute on Heroku**
 
 This general knowledge quiz is played by one player. They set a target but can they beat it?
 
----------------
+-------------
 
 ## Table of contents
 
@@ -18,11 +19,8 @@ This general knowledge quiz is played by one player. They set a target but can t
     2.2 User Stories<br/>
 3. Gameplay & Design<br/>
     3.1 Gameplay<br/>
-    3.2 Page layout<br/>
-    3.3 Icons<br/>
-4. Description of game screen<br/>
-    4.1 Interactive parts<br/>
-    4.2 Non-interactive parts<br/>
+    3.2 Excel file<br/>
+    3.3 Interactability<br/>
 5. Important code functions<br/>
     5.1 JavaScript functions<br/>
     5.2 Python start code<br/>
@@ -61,6 +59,7 @@ This general knowledge quiz is played by one player. They set a target but can t
 
 - Quiztime is run on a mock Python terminal created by Code Institute
 - It is connected to an excel file which not only supplies the questions but stores the results
+- An import of rich has been used to provide color to text
 - The project is deployed via Heroku
 
 #### 1.3 Link to Quiztime
@@ -88,17 +87,40 @@ Who is this project aimed at?
 
 #### 2.2 User Stories
 
+*Developer*
+
+- As a **developer** I can **create easy to follow instructions**<br>so that **I can provide a game that is fun immediately**
+- As a **developer** I can **create a target score function**<br>so that **I can give the user a heightened sense of challenge**
+- As a **developer** I can **add small time delays**<br>so that **users can easily see when things have been added to the screen**
+- As a **developer** I can **create questions that are concise and easy to understand**<br>so that **the game is not confusing for the user and to provide a good user experience**
+- As a **developer** I can **provide questions on a range of topics**<br>so that **I can provide a variety of questions that challenges all different subjects for the user**
+- As a **developer** I can **create a range of difficulties**<br>so that **the user is finds the game more challenging and more dynamic**
+- As a **developer** I can **provide multiple choice answers per question**<br>in order to **make the answering easier by providing choices for the user instead of asking them to type out an answer**
+- As a **developer** I can **check users answer after every question**<br>so that **the user is kept updated and involved in their progress**
+- As a **developer** I can **a visual that has alternating colours**<br>in order to **give the game a less dull appearance despite its text-only visuals**
+- As a **developer** I can **create a database for questions**<br>so that **it is easier to add or update questions or topics
+- As a **developer** I can **create a database to store user information**<br>so that **I can monitor the difficulty levels and how often the quiz is played**
+- As a **developer** I can **create functioning error handling**<br>so that **the game doesn’t crash if an incorrect value is entered by the user**
 
 
+*User*
 
+- As a **user** I can **see instructions**,<br>so that **I can understand the game quickly to make playing more enjoyable**
+- As a **user** I can **enter my name**,<br>so that **I feel personally attached to the game to heighten my experience**
+- As a **user** I can **Play different levels**,<br>so that **I am able to play the game many times over and find it enjoyable**
+- As a **user** I can **Have several possible options**,<br>in order to **to provide a challenge of choosing the correct answer to questions I’m not sure about**
+- As a **user** I can **See what the correct was after every question**,<br>in order to **to inform me of the correct answer if I did get the answer wrong**
+- As a **user** I can **Store my details**,<br>in order to **provide feedback to the developer for possible improvements**
 
+---------------
 
+## 3. Gameplay & Design
 
-#### 1.1 Gameplay and screenshots:
+#### 3.1 Gameplay:
 
-The game starts...
+On page loading, the game starts
 
-![Screenshot of welcome text](assets/images/basic_rules_start.jpg)
+![Screenshot of whole page](assets/images/start_page.jpg)
 
 ...and the player enters their chosen name
 
@@ -108,15 +130,15 @@ The user will be asked what their chosen difficulty level of their 10 questions 
 
 ![Screenshot of choice of difficulty](assets/images/choose_difficulty.jpg)
 
-They can choose between easy
+They can choose between easy...
 
 ![Screenshot of after the easy choice is taken](assets/images/easy_difficulty.jpg)
 
-medium
+...medium...
 
 ![Screenshot of after the medium choice is taken](assets/images/medium_difficulty.jpg)
 
-or hard
+...or hard
 
 ![Screenshot of after the hard choice is taken](assets/images/hard_difficulty.jpg)
 
@@ -136,7 +158,7 @@ The player will then be shown the first question and it's 4 alternative answers.
 The players enter their answers by pressing the A, B, C or D keys on the keyboard and pressing enter.
 The answer is revealed and their current score is also updating after every answer.
 
-An incorrect answer give a score of 0 for that question
+An incorrect answer will give a score of 0 for that question
 
 ![Screenshot of the result of a wrong answer and the score being added is 0](assets/images/q1_wrong_answer.jpg)
 
@@ -160,6 +182,50 @@ If the user beats their target
 Their results are then saved and stored in the same database that stores the questions and the final message is displayed
 
 ![Screenshot of the message that the users results have been saved, thanks for playing and the author & date](assets/images/final_message.jpg)
+
+**New Game and cancel game**
+
+A new game can be run by pressing the "run program" button at the top of the page
+
+![Screenshot of the run program button on the webpage](assets/images/run_program.jpg)
+
+A game can be canceled during play by holding the ctrl button and pressing the c key on your keyboard
+
+![Screenshot of canceling a game by pressing ctrl and c on the keyboard](assets/images/cancel_game.jpg)
+
+#### 3.2 Excel file
+
+The excel file called quiztime is connected through the gspread import.
+
+![Screenshot of the easy tab in the excel file called quiztime](assets/images/excelfile_easyquestions.jpg)
+
+In total there are 5 tabs in the file
+- "easy" containing the 10 easy questions
+- "medium" containing the 10 medium questions
+- "hard" containing the 10 medium questions
+- "all_questions" containing all questions
+- "results" containing a list of the completed user quizzes and their total score
+
+![Screenshot showing all of the tabs in the excel file called quiztime](assets/images/excel_tabs.jpg)
+
+![Screenshot showing the results tab in the excel file called quiztime](assets/images/excel_scores.jpg)
+
+#### 3.3 Interactability
+
+**Interactive buttons**
+
+There is one clickable button and that is above the mock terminal
+- the "run program" button as shown in 3.1
+
+As the program uses the terminal the keyboard is most important and these uses for keys are as follows:
+- entering username (whole keyboard + enter)
+- choosing difficulty level (1,2 or 3 + enter)
+- setting target goal (1-10 + enter)
+- answering questions (A,B,C or D + enter)
+- canceling a game (holding ctrl button while pressing the c key)
+
+--------
+
 
 
 
