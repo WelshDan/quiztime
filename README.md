@@ -21,26 +21,22 @@ This general knowledge quiz is played by one player. They set a target but can t
     3.1 Gameplay<br/>
     3.2 Excel file<br/>
     3.3 Interactability<br/>
-5. Important code functions<br/>
-    5.1 JavaScript functions<br/>
-    5.2 Python start code<br/>
-6. Testing, issues & Bugs<br/>
-    6.1 Online tests<br/>
-    6.2 Manual testing<br/>
-7. Issues & Bugs<br/>
-    7.1 Resolved issues<br/>
-    7.2 Unresolved issues<br/>
-    7.3 Possible future developments<br/>
-    7.4 Validator testing<br/>
-8. Deployment<br/>
-    8.1 Github deployment<br/>
-    8.2 Link<br/>
-9. 404 page<br/>
-    9.1 Page layout<br/>
-    9.2 Interactive parts<br/>
-    9.3 Non-interactive parts<br/>
-10. Credits<br/>
-    10.1 Credits, references and thanks<br/>
+4. Important code functions<br/>
+    4.1 Python functions<br/>
+    4.2 Python start code<br/>
+5. Testing<br/>
+    5.1 Manual testing<br/>
+    5.2 Other tests<br/>
+6. Issues & Bugs<br/>
+    6.1 Resolved issues<br/>
+    6.2 Unresolved issues<br/>
+    6.3 Possible future developments<br/>
+    6.4 Validator testing<br/>
+7. Deployment<br/>
+    7.1 Github deployment<br/>
+    7.2 Link<br/>
+9. Credits<br/>
+    9.1 Credits, references and thanks<br/>
 
 ---------------
 
@@ -226,8 +222,136 @@ As the program uses the terminal the keyboard is most important and these uses f
 
 --------
 
+## 4. Important code functions
 
+#### 4.1 Python functions
 
+In this part, I will list the functions used in this project and give a brief description of what is does.
+The following functions make up the core of this project:
+
+**show_welcome_screencreen()**
+
+The start function
+- Displays the project name and welcomes the player
+
+**get_player_name()**
+
+First function that needs an input from the player
+- Asks for username to be entered
+- Checks the username is not an empty string otherwise it returns an error
+- Returns the username to be used in later functions
+
+**choose_difficulty()**
+
+Provides a choice of three difficulties and then links to the choosing of the questions
+- Informs user of the three options (easy, medium, hard)
+- Asks for user to return a number related to the chosen difficulty
+- Checks the number is a 1,2 or 3 otherwise it returns an error
+- Connects the number returned to a list of the names of the difficulty levels
+
+**initialise_questions(difficulty)**
+
+Uses the difficulty level chosen in choose_difficulty to match with the necessary excel tab
+- Selects the tab using the difficulty level chosen in previous function
+- Loads questions stored in that excel tab related to that difficulty level
+
+**target_score()**
+
+Asks for users target score then stores it for later comparison after the end of the quiz
+- Informs user of number of questions
+- Asks user to enter a target between 1 and 10
+- Checks that what is entered is between 1 and 10 otherwise it returns an error
+- It prints an acceptance if the figure is between 1 and 10
+- Prints two responses depending if the target is "low" (1-5) or "high" (6-10)
+- Returns the users_goal to be used in later functions
+
+**ask_question()**
+
+Asks the questions previously loaded in initialise_questions
+- Finds the next question to ask the user
+- Displays question and it's possible answer alternatives
+- Keeps asking until all questions count is = 10
+
+**accept_answer()**
+
+Asks for answer to question, then checks if the answer is correct against the stored correct answer
+- Asks user to enter an answer of A, B, C or D
+- Checks that what is entered is either A, B, C or D otherwise it returns an error
+- If answer is correct, it informs the user and adds +1 to the users current score
+- If answer is incorrect, it informs the user and adds nothing to users current score
+
+**display_results(username, users_goal)**
+
+Compares users target score with their actual score
+- Checks if the actual score is greater than, equal to or lesser than the target score
+- Displays a message to inform the user depending on the three outcomes
+- Scores are then stored in the excel file in the "results" tab (username and score)
+
+#### 4.2 Python start code
+
+The main code that I have used to run the project in my IDE is:
+- python3 run.py
+
+-------------
+
+## 5. Testing
+
+#### 5.1 Manual testing
+
+| Nr | Section                 | Action                                                     | Expected result                                                                                                          | Correct outcome? |
+| -- | ----------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------- |
+| 1  | Enter name              | Enter a blank space instead of name                        | Error message - “Name cannot be empty. Please enter your name”                                                           | Yes              |
+| 2  | Enter name              | Enter a name                                               | “Welcome {username}!”                                                                                                    | Yes              |
+| 3  | Choose difficulty level | Enter a letter instead of 1, 2 or 3                        | Error message “Invalid data: {error}. Please try again.”                                                                 | No - see below    |
+| 4  | Choose difficulty level | Enter a number not 1,2 or 3                                | Error message “Invalid data: {error}. Please try again.”                                                                 | Yes              |
+| 5  | Choose difficulty level | Enter a number that is 1,2 or 3                            | “You have chosen the {users_difficulty} difficulty level”                                                                | Yes              |
+| 6  | Target score            | Enter a letter instead of a number between 1 & 10          | Error message “Invalid data: {error}Please try again.                                                                    | No - see below    |
+| 7  | Target score            | Enter a number not between 1 & 10                          | Error message “Invalid data: {error}Please try again.                                                                    | Yes              |
+| 8  | Target score            | Enter a number between 1 & 5                               | “{users_goal} is your score to beat, good luck!”                                                                         | Yes              |
+| 9  | Target score            | Enter a number between 5 & 10                              | Challenging target! Best of luck trying to beat {users_goal}!”                                                           | Yes              |
+| 10 | Answer question         | Enter a letter that is not A, B, C or D                    | Error message “Invalid data: You can only answer with A, B, C or D. Please try again.”                                   | Yes              |
+| 11 | Answer question         | Enter a number instead of A, B, C or D                     | Error message “Invalid data: You can only answer with A, B, C or D. Please try again.”                                   | Yes              |
+| 12 | Answer question         | Enter the letter that matches the correct answer           | “Good answer, {correct_answer} was correct!”                                                                             | Yes              |
+| 13 | Answer question         | Enter the letter that matches an incorrect answer          | 1: “Thank you for your answer.\\nThe correct answer was {correct_answer}”<br>2: "The answer {answer} was incorrect”      | Yes              |
+| 14 | End Result              | Check that the final score is displayed correctly          | Final score should be correct and this message should be shown with the correct result:<br>“Your final score is {score}” | Yes              |
+| 15 | End Result              | Answering all questions so that target score is not beaten | 1: "Sadly, your target score was {users_goal} but you only got {score}“<br>2: "You just missed your target, bad luck!”   | Yes              |
+| 16 | End Result              | Answering all questions so that target score is equalled   | 1: "Well done! Your target score was {users_goal} and you matched it!”<br>2: "You hit your target, well done!"           | Yes              |
+| 17 | End Result              | Answering all questions so that target score is beaten     | 1: "Congratulations! Your target was {users_goal} and you scored {score}!"<br>2: "You beat it! Excellent work!"          | Yes              |
+| 18 | End Result              | Check that “scores being saved” appears                    | Scores are being saved to the history books”                                                                             | Yes              |
+| 19 | End Result              | Check that username and score are saved to excel file      | Check in tab “results” that username and score appears                                                                   | Yes              |
+
+**Tests without expected outcome**
+
+- Test nr.3 - Choose difficulty level<br>
+On entering a letter instead of a number, the following message is displayed:
+“Invalid data: invalid literal for int() with base 10: 'a'Please try again.”<br>
+There should be an extra error handling inserted to replace that text
+
+- Test nr.6 - Target score<br>
+On entering a letter instead of a number, the following message is displayed:
+“Invalid data: invalid literal for int() with base 10: 'a'Please try again.”<br>
+There should be an extra error handling inserted to replace that text
+
+#### 5.2 Other tests
+
+Multi Device Website Mockup Generator
+
+![Screenshot of start screen taken using https://techsini.com/multi-mockup/index.php](assets/images/multi_device_website_check.jpg)
+
+Lighthouse - Google desktop
+
+![Screenshot showing the lighthouse test results in google for the desktop](assets/images/lighthouse_google_desktop.jpg)
+
+Lighthouse - Google mobile
+
+![Screenshot showing the lighthouse test results in google for the mobile](assets/images/lighthouse_google_mobile.jpg)
+
+PEP8 - online test
+
+![Screenshot from pep8 check](assets/images/PEP8check.jpg)
+
+After running a website checker, it returned the following issues:
+- *Critical*	This page has no h1 element, which violates Bing webmaster guidelines.
 
 
 ### Features
@@ -265,7 +389,7 @@ A function called display results which compares the final score and the target 
 
 PEP8 - online test
 
-![Screenshot](assets/images/PEP8check.jpg)
+![Screenshot from pep8 check](assets/images/PEP8check.jpg)
 
 ![Screenshot of start screen taken using https://techsini.com/multi-mockup/index.php](assets/images/multi_device_website_check.jpg)
 

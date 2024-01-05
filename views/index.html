@@ -1,27 +1,38 @@
-<body>
-    <button onclick="window.location.reload()">Run Program</button>
-    <div id="terminal"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiztime</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon-32x32.png">
+</head>
+    <body>
+        <h1>Quiztime</h1>
+        <button onclick="window.location.reload()">Run program</button>
+        <div id="terminal"></div>
 
-    <script>
-        var term = new Terminal({
-            cols: 80,
-            rows: 24
-        });
-        term.open(document.getElementById('terminal'));
-        term.writeln('Running startup command: python3 run.py');
-        term.writeln('');
+        <script>
+            var term = new Terminal({
+                cols: 80,
+                rows: 24
+            });
+            term.open(document.getElementById('terminal'));
+            term.writeln('Running startup command: python3 run.py');
+            term.writeln('');
 
-        var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
-            ':' + location.port) : '') + '/');
+            var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
+                ':' + location.port) : '') + '/');
 
-        ws.onopen = function () {
-            new attach.attach(term, ws);
-        };
+            ws.onopen = function () {
+                new attach.attach(term, ws);
+            };
 
-        ws.onerror = function (e) {
-            console.log(e);
-        };
-        // Set focus in the terminal
-        document.getElementsByClassName("xterm-helper-textarea")[0].focus();
-    </script>
-</body>
+            ws.onerror = function (e) {
+                console.log(e);
+            };
+            // Set focus in the terminal
+            document.getElementsByClassName("xterm-helper-textarea")[0].focus();
+        </script>
+    </body>
+</html>

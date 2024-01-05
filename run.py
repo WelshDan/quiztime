@@ -37,10 +37,8 @@ questions_list = []
 question_index = 0
 
 
-def show_welcome_screencreen():
-    """
-    Start screen that welcomes the user
-    """
+def show_welcome_screen():
+    """ Start screen that welcomes the user."""
     console.print("   Hello!\n", style="info")
     time.sleep(0.5)
     console.print("   and welcome to...\n", style="info")
@@ -50,10 +48,7 @@ def show_welcome_screencreen():
 
 
 def get_player_name():
-    """
-    Get username from the user. A while loop with a true check to
-    stop users entering a blank name
-    """
+    """Get username from the user. A while loop with a true check to stop users entering a blank name."""
     while True:
         username = input(" Please enter your name: \n ")
         if username.strip():
@@ -213,7 +208,7 @@ def start_quiz(username, users_goal):
 def main():
     global question_index
     global score
-    show_welcome_screencreen()
+    show_welcome_screen()
     username = get_player_name()
     difficulty = choose_difficulty()
     initialise_questions(difficulty)
