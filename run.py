@@ -120,7 +120,7 @@ def target_score():
                     console.print(f"\n Challenging target! Best of luck trying to beat {users_goal}!\n", style="info")
                 break
         except ValueError as error:
-            console.print(f" Invalid data: {error}Please try again.\n", style="error")
+            console.print(f" You have not chosen a number between 1 and 10. Please try again.\n", style="error")
         
     return users_goal
 
@@ -163,7 +163,7 @@ def accept_answer():
                 time.sleep(0.5)
                 break
         except ValueError as error:
-            console.print(f" Invalid data: {error}Please try again.\n", style="error")
+            console.print(f" You have not chosen A,B, C or D. Please try again.\n", style="error")
 
 
 def display_results(username, users_goal):

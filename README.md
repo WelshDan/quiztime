@@ -62,7 +62,7 @@ This general knowledge quiz is played by one player. They set a target but can t
 
 #### 1.3 Link to Quiztime
 
-Quiztime can be found using this [link](https://quiztime.herokuapp.com/)
+Quiztime can be found [here](https://quiztime.herokuapp.com/)
 
 ---------------
 
@@ -549,7 +549,7 @@ Akshat Garg - my mentor, who has helped, demonstrated and motivated
 **Three Amigos Quiz**
 For their quiz questions
 
-#### References
+#### 8.2 References
 
 **Time delay function**
 [GURU99.com](https://www.guru99.com/python-time-sleep-delay.html#:~:text=Python%20sleep()%20is%20a,the%20execution%20of%20your%20code)
@@ -561,7 +561,7 @@ For their quiz questions
 [Excel sheet to markdown table convertor](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/)
 
 
-#### Thanks
+#### 8.3 Thanks
 
 **Thanks to my family for their patience**
 To Akshat Garg for his help as mentor
