@@ -77,15 +77,21 @@ def choose_difficulty():
     time.sleep(0.5)
 
     while True:
+        users_difficulty = input(" My choice is: \n ")
+
+        if users_difficulty.strip() == "":
+            console.print("You have entered a blank space. Please choose between 1, 2 and 3. \n", style="error")
+            continue
+
         try:
-            users_difficulty = int(input(" My choice is: \n "))
-            if users_difficulty not in range(1, 4):
-                raise ValueError(f" You must choose either 1,2 or 3. You provided {users_difficulty}")
+            check_users_difficulty = int(users_difficulty)
+            if check_users_difficulty in range(1, 4):
+                console.print("\n You have chosen the " + DIFFICULTY_LEVEL_TO_NAME_MAP[check_users_difficulty] + " difficulty level\n", style="info")
+                return check_users_difficulty
             else:
-                console.print("\n You have chosen the " + DIFFICULTY_LEVEL_TO_NAME_MAP[users_difficulty] + " difficulty level\n", style="info")
-                return users_difficulty    
+                console.print(f" You must choose between 1,2 and 3. You provided {users_difficulty}\n", style="error")
         except ValueError as error:
-            console.print(f" Invalid data: {error}. Please try again.\n", style="error")
+            console.print(f" {users_difficulty} is not a number. Please choose between 1,2 and 3.\n", style="error")
  
 
 def initialise_questions(difficulty):
