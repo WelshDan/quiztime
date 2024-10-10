@@ -110,25 +110,33 @@ def target_score():
     number between 1 and 10 is entered.
     """
     users_goal = None
+
+    console.print(" The quiz contains " + str(TOTAL_QUESTIONS) + " questions.\n", style="info")
+    console.print(" What is your target score? Please choose a target between 1 and 10. \n", style="command")
+    time.sleep(0.5)
+
     while True:
-        console.print(" The quiz contains " + str(TOTAL_QUESTIONS) + " questions.\n", style="info")
-        console.print(" What is your target score? Please choose a target between 1 and 10\n", style="command")
+        users_goal = input(" My goal is: \n ")
         time.sleep(0.5)
+
+        if users_goal.strip() == "":
+            console.print("You have entered a blank space. Please choose a target between 1 and 10. \n", style="error")
+            continue
+
         try:
-            users_goal = int(input(" My goal is: \n "))
-            time.sleep(0.5)
-            if users_goal not in range(1, 11):
-                raise ValueError(f" Your target must be between 1 and 10. You provided {users_goal}\n")
-            else:
+            check_users_goal = int(users_goal)
+            if check_users_goal in range(1, 11):
                 if users_goal <= 5:
-                    console.print(f"\n {users_goal} is your score to beat, good luck!\n", style="info")
+                    console.print(f"\n {check_users_goal} is your score to beat, good luck!\n", style="info")
                 else:
-                    console.print(f"\n Challenging target! Best of luck trying to beat {users_goal}!\n", style="info")
+                    console.print(f"\n Challenging target! Best of luck trying to beat {check_users_goal}!\n", style="info")
                 break
+            else:
+                console.print(f" Your target must be between 1 and 10. You provided {users_goal}\n", style="error")
         except ValueError as error:
-            console.print(f" You have not chosen a number between 1 and 10. Please try again.\n", style="error")
+            console.print(f" You entered {users_goal} but that is not a number. Please try again.\n", style="error")
         
-    return users_goal
+    return check_users_goal
 
 
 def ask_question():
