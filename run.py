@@ -126,9 +126,11 @@ def target_score():
         try:
             check_users_goal = int(users_goal)
             if check_users_goal in range(1, 11):
-                if users_goal <= 5:
+                if check_users_goal <= 5:
+                    time.sleep(0.5)
                     console.print(f"\n {check_users_goal} is your score to beat, good luck!\n", style="info")
                 else:
+                    time.sleep(0.5)
                     console.print(f"\n Challenging target! Best of luck trying to beat {check_users_goal}!\n", style="info")
                 break
             else:
@@ -144,6 +146,7 @@ def ask_question():
     Locate the first question in the list. Repeat until the
     total questions are asked.
     """
+    time.sleep(0.5)
     question = questions_list[question_index + 1]
     console.print(f" Here is question {question[0]}...\n", style="info")
     time.sleep(0.5)
