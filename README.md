@@ -300,14 +300,16 @@ The main code that I have used to run the project in my IDE is:
 
 #### 5.1 Manual testing
 
+## Initial testing
+
 | Nr | Section                 | Action                                                     | Expected result                                                                                                          | Correct outcome? |
 | -- | ----------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------- |
 | 1  | Enter name              | Enter a blank space instead of name                        | Error message - “Name cannot be empty. Please enter your name”                                                           | Yes              |
 | 2  | Enter name              | Enter a name                                               | “Welcome {username}!”                                                                                                    | Yes              |
-| 3  | Choose difficulty level | Enter a letter instead of 1, 2 or 3                        | Error message “Invalid data: {error}. Please try again.”                                                                 | No - see below    |
+| 3  | Choose difficulty level | Enter a letter instead of 1, 2 or 3                        | Error message - " You must choose between 1,2 and 3. You provided {users_difficulty}\n"                                                                 | No - see below   |
 | 4  | Choose difficulty level | Enter a number not 1,2 or 3                                | Error message “Invalid data: {error}. Please try again.”                                                                 | Yes              |
 | 5  | Choose difficulty level | Enter a number that is 1,2 or 3                            | “You have chosen the {users_difficulty} difficulty level”                                                                | Yes              |
-| 6  | Target score            | Enter a letter instead of a number between 1 & 10          | Error message “Invalid data: {error}Please try again.                                                                    | No - see below    |
+| 6  | Target score            | Enter a letter instead of a number between 1 & 10          | Error message - " You entered {users_goal} but that is not a number. Please try again."                                            | No - see below    |
 | 7  | Target score            | Enter a number not between 1 & 10                          | Error message “Invalid data: {error}Please try again.                                                                    | Yes              |
 | 8  | Target score            | Enter a number between 1 & 5                               | “{users_goal} is your score to beat, good luck!”                                                                         | Yes              |
 | 9  | Target score            | Enter a number between 5 & 10                              | Challenging target! Best of luck trying to beat {users_goal}!”                                                           | Yes              |
@@ -327,12 +329,23 @@ The main code that I have used to run the project in my IDE is:
 - Test nr.3 - Choose difficulty level<br>
 On entering a letter instead of a number, the following message is displayed:
 “Invalid data: invalid literal for int() with base 10: 'a'Please try again.”<br>
-There should be an extra error handling inserted to replace that text
+There should be an extra error handling inserted to replace that text<br>
+*Corrected - See Follow-up testing & additional tests*
 
 - Test nr.6 - Target score<br>
 On entering a letter instead of a number, the following message is displayed:
 “Invalid data: invalid literal for int() with base 10: 'a'Please try again.”<br>
-There should be an extra error handling inserted to replace that text
+There should be an extra error handling inserted to replace that text<br>
+*Corrected - See Follow-up testing & additional tests*
+
+## Follow-up testing & additional tests
+
+| Nr | Section                 | Action                                                     | Expected result                                                                                                          | Correct outcome? |
+| -- | ----------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------- |
+| 3  | Choose difficulty level | Enter a letter instead of 1, 2 or 3                        | Error message - " You must choose between 1,2 and 3. You provided {users_difficulty}"                                                                 | Yes    |
+| 6  | Target score            | Enter a letter instead of a number between 1 & 10          | Error message - " You entered {users_goal} but that is not a number. Please try again."                                                            | Yes  |
+| 20 | Choose difficulty level | Enter a space or pressing enter instead of 1, 2 or 3      | Error message - "You have entered a blank space. Please choose between 1, 2 and 3."                                      | Yes              |
+| 21 | Target score              | Enter a space or pressing enter instead of a number between 1 & 10      | Error message - "You have entered a blank space. Please choose a target between 1 and 10.                                  | Yes              |
 
 #### 5.2 Other tests
 
@@ -388,17 +401,6 @@ Using the feedback from the assessor, I created a table with issues that were ra
 
 #### 6.2 Unresolved issues
 
-Taking the two points from **5.1 Manual Testing** - **Tests without expected outcome**
-- Test nr.3 - Choose difficulty level<br>
-On entering a letter instead of a number, the following message is displayed:
-“Invalid data: invalid literal for int() with base 10: 'a'Please try again.”<br>
-There should be an extra error handling inserted to replace that text
-
-- Test nr.6 - Target score<br>
-On entering a letter instead of a number, the following message is displayed:
-“Invalid data: invalid literal for int() with base 10: 'a'Please try again.”<br>
-There should be an extra error handling inserted to replace that text
-
 There have been issues with some of the dependencies on the requirements.txt file and when starting up a new workspace in Codeanywhere after a bug, and loading up the requirements.txt, I had lots more dependencies that were necessary and they started to give me problems during depolyment (see the deployment picture below). Since I created this new workspace, upon loading up the workspace in Codeanywhere to work in the workspace, I have to complete a few installation steps before the errors are cleared.<br>
 The following dependencies need to be installed and in this order:
 - sudo apt install libcairo2-dev pkg-config python3-dev
@@ -420,7 +422,7 @@ The following improvements could be made to raise the playability or quality lev
 - Design could be improved to create a more aesthetic user experience
 - A restart button could be introduced so players could start over by just clicking a button
 - More questions can easily be added due to the use of a database to store questions
-- Difficulty levels could have different number of multiple choices options (for example, easy = A or B, medium = A, B or C, hard = A, B, C or D
+- Difficulty levels could have different number of multiple choices options (for example, easy = A or B, medium = A, B or C, hard = A, B, C or D)
 - Logging answers to all questions to see if questions were suitable or to correct their difficulty level according to user results
 
 ---------
